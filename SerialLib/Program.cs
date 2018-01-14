@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Open.Nat;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -12,7 +13,12 @@ namespace SerialLib
     {
         static void Main(string[] args)
         {
-            using (SerialPort port = new SerialPort("COM9"))
+            var discoverer = new NatDiscoverer();
+            var device = discoverer.DiscoverDeviceAsync().Result;
+            var ip = device.GetExternalIPAsync().Result;
+            Console.WriteLine("The external IP Address is: {0} ", ip);
+
+            using (SerialPort port = new SerialPort("COM11"))
             {
                 port.Open();
 

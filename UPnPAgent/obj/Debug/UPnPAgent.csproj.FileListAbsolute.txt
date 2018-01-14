@@ -1,0 +1,9 @@
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.exe.config
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.exe
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csprojResolveAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csproj.CoreCompileInputs.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.exe
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Open.Nat.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Open.Nat.xml
