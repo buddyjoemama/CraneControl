@@ -43,6 +43,8 @@ namespace UPnPAgent
 
                 if (externalIp != ip)
                 {
+                    StorageHelper.StoreSetting("IPAddress", ip.ToString());
+
                     externalIp = ip;
                     foreach (var portConfig in ConfigurationManager.AppSettings["Ports"].Split(new char[] { ',' }))
                     {
