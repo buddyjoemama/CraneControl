@@ -13,3 +13,4 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\Open.Nat.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csprojResolveAssemblyReference.cache

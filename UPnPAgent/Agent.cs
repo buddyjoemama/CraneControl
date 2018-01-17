@@ -32,7 +32,7 @@ namespace UPnPAgent
 
         public async Task Run()
         {
-            int.TryParse(ConfigurationManager.AppSettings["DelaySeconds"], out int delay);
+            int.TryParse(ConfigurationManager.AppSettings["DelayMinutes"], out int delay);
 
             IPAddress externalIp = IPAddress.None;
             var discoverer = new NatDiscoverer();
