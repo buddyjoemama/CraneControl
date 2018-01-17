@@ -1,4 +1,5 @@
-﻿using Open.Nat;
+﻿using Common.Configuration;
+using Open.Nat;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,7 +1,6 @@
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.exe.config
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.exe
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.pdb
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csprojResolveAssemblyReference.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csproj.CoreCompileInputs.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.exe
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.pdb
@@ -14,7 +13,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Microsoft.WindowsAzure.Storage.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Newtonsoft.Json.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\System.Spatial.dll
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Microsoft.Azure.KeyVault.Core.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Microsoft.Data.Edm.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Microsoft.Data.OData.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Microsoft.Data.Services.Client.xml
@@ -58,3 +56,7 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\ru\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csprojResolveAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Common.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Common.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\Common.dll.config
