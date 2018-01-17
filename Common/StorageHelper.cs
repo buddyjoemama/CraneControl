@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Configuration;
 using System.Net;
+using System.Linq;
 
 namespace Common.Configuration
 {
@@ -12,10 +13,18 @@ namespace Common.Configuration
     {
         private static CloudTable table = null;
 
+        public static class StorageKeys
+        {
+            public static String IPAddress = "IPAddress";
+            public static String Port = "Port";
+        }
+
         static StorageHelper()
         {
             // Parse the connection string and return a reference to the storage account.
-            CloudStorageAccount storageAccount = CloudStorageAccount.Parse(ConfigurationManager.AppSettings["StorageConnectionString"]);
+            CloudStorageAccount storageAccount = CloudStorageAccount.Parse("DefaultEndpointsProtocol=https;AccountName=craneiotstorage;" +
+                "AccountKey=VjzhMrlHGCJv/70Ytpbrpe8HtTpxDC3fQ26B8STBjcJTZZoiwjG2kjlgLeEVWpFsnK8VPHaRkcsCCrh8qItkUg==;" +
+                "EndpointSuffix=core.windows.net");
 
             // Create the table client.
             CloudTableClient tableClient = storageAccount.CreateCloudTableClient();
@@ -33,16 +42,26 @@ namespace Common.Configuration
             table.Execute(TableOperation.InsertOrReplace(entity));
         }
 
-        class SettingsEntity : TableEntity
+        public static SettingsEntity GetSetting(String settingName)
         {
-            public SettingsEntity(String name, String value)
-            {
-                this.PartitionKey = name;
-                this.RowKey = name;
-                this.Value = value;
-            }
+            var entity = table.ExecuteQuery(new TableQuery<SettingsEntity>()
+                .Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, settingName))).SingleOrDefault();
 
-            public String Value { get; set; }
+            return entity as SettingsEntity;
         }
+    }
+
+    public class SettingsEntity : TableEntity
+    {
+        public SettingsEntity() { }
+
+        public SettingsEntity(String name, String value)
+        {
+            this.PartitionKey = name;
+            this.RowKey = name;
+            this.Value = value;
+        }
+
+        public String Value { get; set; }
     }
 }
