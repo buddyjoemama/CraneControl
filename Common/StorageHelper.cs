@@ -16,7 +16,8 @@ namespace Common.Configuration
         public static class StorageKeys
         {
             public static String IPAddress = "IPAddress";
-            public static String Port = "Port";
+            public static String PublicPort = "PublicPort";
+            public static String PrivatePort = "PrivatePort";
         }
 
         static StorageHelper()

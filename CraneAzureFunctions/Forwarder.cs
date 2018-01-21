@@ -17,9 +17,8 @@ namespace CraneAzureFunctions
         {
             log.Info("C# HTTP trigger function processed a request.");
 
-
             String ipaddress = StorageHelper.GetSetting(StorageHelper.StorageKeys.IPAddress)?.Value;
-            String port = StorageHelper.GetSetting(StorageHelper.StorageKeys.Port)?.Value;
+            String port = StorageHelper.GetSetting(StorageHelper.StorageKeys.PublicPort)?.Value;
 
             var response = req.CreateResponse(HttpStatusCode.Redirect);
             response.Headers.Location = new Uri($"http://{ipaddress}:{port}");
