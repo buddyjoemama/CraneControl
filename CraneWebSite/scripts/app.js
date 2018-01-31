@@ -1,4 +1,18 @@
-angular.module('craneWeb', [])
-    .controller('craneController', function($scope, $http) {
-        $scope.test = "tst";
+var app = angular.module('craneWeb', []);
+
+app.component('cameraControl', {
+    templateUrl: 'templates/cameraControl.html',
+    bindings: {
+        camera: '@'
+    },
+    controller: function () {
+
+    }
+});
+
+app.component('controlDashboard', {
+    templateUrl: 'templates/controlDashboard.html',
+    controller: function ($http) {
+
+    }
 });
