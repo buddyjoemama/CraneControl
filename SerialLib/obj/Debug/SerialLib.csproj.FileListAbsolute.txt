@@ -5,7 +5,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\SerialWeb\SerialLib\obj\Deb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\SerialWeb\SerialLib\obj\Debug\SerialLib.csproj.CoreCompileInputs.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\SerialWeb\SerialLib\obj\Debug\SerialLib.exe
 C:\Users\brian\Documents\Visual Studio 2017\Projects\SerialWeb\SerialLib\obj\Debug\SerialLib.pdb
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\SerialLib.exe.config
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\SerialLib.exe
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\SerialLib.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csproj.CoreCompileInputs.cache

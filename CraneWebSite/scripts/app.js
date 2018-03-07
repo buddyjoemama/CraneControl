@@ -5,8 +5,11 @@ app.component('cameraControl', {
     bindings: {
         camera: '@'
     },
-    controller: function () {
-
+    controller: function ($interval) {
+        var $ctrl = this;
+        $interval(function () {
+            $ctrl.url = "http://192.168.86.113:8081/out.jpg?q=30&id=0.12044973793836311&r=" + new Date().getTime().toString();
+        }, 500);
     }
 });
 

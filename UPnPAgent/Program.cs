@@ -31,4 +31,4 @@ namespace UPnPAgent
         }
     }
 }
-//https://azurecraneappfunctions.azurewebsites.net/api/Forwarder
+//http://craneforwarder.azurewebsites.net/api/Forwarder

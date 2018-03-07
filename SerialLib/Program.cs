@@ -13,33 +13,29 @@ namespace SerialLib
     {
         static void Main(string[] args)
         {
-            var discoverer = new NatDiscoverer();
-            var device = discoverer.DiscoverDeviceAsync().Result;
-            var ip = device.GetExternalIPAsync().Result;
-            Console.WriteLine("The external IP Address is: {0} ", ip);
-
-            using (SerialPort port = new SerialPort("COM11"))
+            using (SerialPort port = new SerialPort("COM5"))
             {
                 port.Open();
 
                 int b = 0;
 
-                while(port.IsOpen)
+                while (port.IsOpen)
                 {
-                    port.Write(new byte[] { (byte)((++b) % 255) }, 0, 1);
+                    port.Write(new byte[] { 1, 1 }, 0, 2);
 
-                    if (port.BytesToRead > 0)
-                    {
-                        byte[] buffer = new byte[port.BytesToRead];
-                        port.Read(buffer, 0, buffer.Length);
+                    //if (port.BytesToRead > 0)
+                    //{
+                    //    byte[] buffer = new byte[port.BytesToRead];
+                    //    port.Read(buffer, 0, buffer.Length);
 
-                        foreach (var d in buffer)
-                        {
-                            Console.WriteLine(d);
-                        }
-                    }
+                    //    foreach (var d in buffer)
+                    //    {
+                    //        Console.WriteLine(d);
+                    //    }
+                    //}
 
                     Thread.Sleep(10);
+                    port.Write(new byte[] { 0, 0 }, 0, 2);
                 }
             }
         }

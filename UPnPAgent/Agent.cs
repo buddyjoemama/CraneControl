@@ -33,12 +33,13 @@ namespace UPnPAgent
         public async Task Run()
         {
             int.TryParse(ConfigurationManager.AppSettings["DelayMinutes"], out int delay);
-            int.TryParse(ConfigurationManager.AppSettings["ServerPrivatePort"], out int serverPrivatePort);
             int.TryParse(ConfigurationManager.AppSettings["ServerPublicPort"], out int serverPublicPort);
+            int.TryParse(ConfigurationManager.AppSettings["ServerPrivatePort"], out int serverPrivatePort);
 
             IPAddress externalIp = IPAddress.None;
             var discoverer = new NatDiscoverer();
             var device = await discoverer.DiscoverDeviceAsync();
+            
 
             while (true)
             {
@@ -52,14 +53,19 @@ namespace UPnPAgent
                     StorageHelper.StoreSetting(StorageHelper.StorageKeys.PublicPort, serverPublicPort.ToString());
                     StorageHelper.StoreSetting(StorageHelper.StorageKeys.PrivatePort, serverPrivatePort.ToString());
 
+                    foreach (var m in await device.GetAllMappingsAsync())
+                    {
+                        try
+                        {
+                            await device.DeletePortMapAsync(m);
+                        }
+                        catch { }
+                    }
+
                     try
                     {
-                        var mapping = await device.GetSpecificMappingAsync(Protocol.Tcp, serverPrivatePort);
-                        if (mapping == null)
-                        {
-                            mapping = new Mapping(Protocol.Tcp, serverPrivatePort, serverPublicPort);
-                            await device.CreatePortMapAsync(mapping);
-                        }
+                        var mapping = new Mapping(Protocol.Tcp, serverPrivatePort, serverPublicPort, "testing");
+                        await device.CreatePortMapAsync(mapping);
                     }
                     catch { }
                 }
