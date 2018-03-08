@@ -45,7 +45,6 @@ void setup() {
 
 void loop()
 {
-	
 	char buffer[2];
 	
 	if(Serial.available() > 0) {
