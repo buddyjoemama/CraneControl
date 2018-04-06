@@ -14,7 +14,7 @@ void setup() {
   pinMode(dataPin, OUTPUT);
 
   Shift(255, 255);
-  delay(3000);
+  delay(5000);
   Shift(0, 0);
   
   for(int i = 0; i < 6; i++)
