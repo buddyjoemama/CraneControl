@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en" ng-app="craneWeb">
 
 <head>
@@ -36,13 +36,11 @@
         height: 66%;
     }
 
-    control-dashboard,
     div.controls {
         height: 100%;
         background-color: cornflowerblue;
     }
 
-    control-dashboard>div,
     div.controls>div {
         display: table-cell;
         vertical-align: middle;
@@ -66,34 +64,31 @@
 
 <body>
 
-    <!--camera-control camera="1"></camera-control>
-    <control-dashboard></control-dashboard--->
-
     <div class="camera">
         <camera-control camera="cab"></camera-control>
     </div>
 
-    <div class="controls">
+    <div class="controls" ng-controller="dashboard as vm">
         <div class="cardinal">
             <div style="display: inline-block; margin-bottom: 10px;">
-                <button>
+                <button ng-click="vm.control(1)">
                     <i class="fas fa-angle-up"></i>
                 </button>
             </div>
             <div style="overflow: hidden;">
                 <div style="float: left">
-                    <button>
+                    <button ng-click="vm.control(4)">
                         <i class="fas fa-angle-left"></i>
                     </button>
                 </div>
                 <div style="float: right">
-                    <button>
+                    <button ng-click="vm.control(3)">
                         <i class="fas fa-angle-right"></i>
                     </button>
                 </div>
             </div>
             <div style="display: inline-block;margin-top: 10px;">
-                <button>
+                <button ng-click="vm.control(2)">
                     <i class="fas fa-angle-down"></i>
                 </button>
             </div>
