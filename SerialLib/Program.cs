@@ -12,65 +12,87 @@ namespace SerialLib
     public enum CraneActions
     {
         Off = 0,
-        PlatformNorth = 1,
-        PlatformSouth = 2,
-        PlatformEast = 3,
-        PlatformWest = 4,
+        On = 1
+    }
 
-        CabCW = 5,
-        CabCCW = 6,
+    public enum NorthChipActions
+    {
+        Deactivate = -1,
 
-        HookUp = 7,
-        HookDown = 8,
+        CabCW = 0,
+        CabCCW = 1,
 
-        BoomUp = 9,
-        BoomDown = 10,
+        BoomUp = 2,
+        BoomDown = 3
+    }
 
-        MagOn = 11
+    public enum SouthChipActions
+    {
+        Deactivate = -1,
+
+        HookUp = 0,
+        HookDown = 1,
+
+        PlatformEast = 2,
+        PlatformWest = 3,
+
+        PlatformNorth = 4,
+        PlatformSouth = 5
+    }
+
+    public enum MagActions
+    {
+        Off = 0,
+        On = 4
     }
 
     public static class Driver
     {
-        public static void Control(CraneActions action, String com = "COM9")
+        private static byte s_NorthChip = (byte)CraneActions.Off;
+        private static byte s_SouthChip = (byte)CraneActions.Off;
+        public static string _com = "COM9";
+
+        public static void Control(CraneActions craneActions, NorthChipActions north, SouthChipActions south, bool magOn = false)
         {
-            byte northChip = 0;
-            byte southChip = 0;
+            if (north != NorthChipActions.Deactivate)
+                s_NorthChip = (byte)(1 << (int)north);
+            else
+                s_NorthChip = 0;
 
-            if (action == CraneActions.PlatformNorth)
-                southChip = 1 << 4;
-            else if (action == CraneActions.PlatformSouth)
-                southChip = 1 << 5;
-            else if (action == CraneActions.PlatformEast)
-                southChip = 1 << 3;
-            else if (action == CraneActions.PlatformWest)
-                southChip = 1 << 2;
-            else if (action == CraneActions.HookUp)
-                southChip = 1 << 1;
-            else if (action == CraneActions.HookDown)
-                southChip = 1;
+            if (south != SouthChipActions.Deactivate)
+                s_SouthChip = (byte)(1 << (int)south);
+            else
+                s_SouthChip = 0;
 
-            if (action == CraneActions.CabCW)
-                northChip = 1;
-            else if (action == CraneActions.CabCCW)
-                northChip = 1 << 1;
-            else if (action == CraneActions.BoomUp)
-                northChip = 1 << 2;
-            else if (action == CraneActions.BoomDown)
-                northChip = 1 << 3;
+            if (magOn)
+                s_NorthChip |= (byte)(1 << ((int)MagActions.On));
 
-            if (action == CraneActions.MagOn)
-                northChip |= 1 << 4;
+            if (craneActions == CraneActions.Off)
+                s_NorthChip = s_SouthChip = 0;
 
-            using (SerialPort port = new SerialPort(com))
-            {
-                port.Open();
-                port.Write(new byte[] { northChip, southChip }, 0, 2);
-            }
+            Write();
+        }
+
+        public static void Activate(CraneActions action)
+        {
+            if (action == CraneActions.Off)
+                s_NorthChip = s_SouthChip = 0;
+
+            Write();
         }
 
         public static String[] EnumeratePorts()
         {
             return SerialPort.GetPortNames();
+        }
+
+        private static void Write()
+        {
+            using (SerialPort port = new SerialPort(_com))
+            {
+                port.Open();
+                port.Write(new byte[] { s_NorthChip, s_SouthChip }, 0, 2);
+            }
         }
     }
 }

@@ -25,8 +25,25 @@ app.component('controlDashboard', {
 app.controller('dashboard', function ($http) {
 
     var vm = this;
+    vm.mag = false;
 
-    vm.control = function (val) {
-        $http.get('api/control?action=' + val);
+    vm.control = function (northChip, southChip, mag) {
+        $http.get('api/control/operate/' + northChip + "/" + southChip + "/" + mag);
+    }
+
+    vm.platformUp = function () {
+        vm.control(-1, 4, vm.mag);
+    }
+
+    vm.platformLeft = function () {
+        vm.control(-1, 3, vm.mag);
+    }
+
+    vm.platformDown = function () {
+        vm.control(-1, 5, vm.mag);
+    }
+
+    vm.platformRight = function () {
+        vm.control(-1, 2, vm.mag);
     }
 });
