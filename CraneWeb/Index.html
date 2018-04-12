@@ -54,7 +54,6 @@
 
     .cardinal {
         padding: 10px;
-        border: 1px solid white;
     }
 
     .cardinal button {
@@ -69,7 +68,7 @@
     </div>
 
     <div class="controls" ng-controller="dashboard as vm">
-        <div class="cardinal">
+        <div class="cardinal" style="border: 1px solid white;">
             <div style="display: inline-block; margin-bottom: 10px;">
                 <button ng-click="vm.platformUp()">
                     <i class="fas fa-angle-up"></i>
@@ -93,11 +92,38 @@
                 </button>
             </div>
         </div>
-        <div>
-            Platform rotate
+        <div style="border: 1px solid white;">
+            <span><strong>Platform Rotation</strong></span>
+            <div class="cardinal">
+                <div style="margin-bottom: 10px;">
+                    <button ng-click="vm.platformUp()">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button ng-click="vm.platformDown()">
+                        <i class="fas fa-undo"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div>
-            Boom and magnet
+        <div style="overflow: hidden; border: 1px solid white;">
+            <div style="margin-bottom: 30px"><strong>Boom and Magnet</strong></div>
+            <div style="width:100px; float: left;">
+                <button>
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+                <button>
+                    <i class="fas fa-arrow-down"></i>
+                </button>
+            </div>
+            <div style="float: left;">
+                <div>Magnet</div>
+                <button style="margin-top: 0px;">
+                    Off
+                    <i class="fas fa-bolt"></i>
+                </button>
+            </div>
         </div>
     </div>
 

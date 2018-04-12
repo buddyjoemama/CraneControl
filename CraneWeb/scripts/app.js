@@ -22,6 +22,7 @@ app.component('controlDashboard', {
     }
 });
 
+
 app.controller('dashboard', function ($http) {
 
     var vm = this;
