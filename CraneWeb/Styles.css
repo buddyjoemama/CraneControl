@@ -1,0 +1,192 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #E2F9FF;
+}
+
+.menu-container {
+    color: #fff;
+    padding: 5px;
+    justify-content: flex-start;
+    display: flex;
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions {
+    color: #7c8783;
+    display: flex;
+    width: 250px;
+}
+
+.status {
+    width: 10px;
+    height: 10px;
+    background: green;
+    display: block;
+    float: left;
+    margin-top: 8px;
+    margin-right: 5px;
+}
+
+.action-items {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.action-items:hover {
+    cursor: pointer;
+}
+
+.action-items div:hover {
+    text-decoration: underline;
+}
+
+.title {
+    color: #B28025;
+    display: flex;
+}
+
+.title .letter {
+    padding: 10px;
+    font-size: 2em;
+    color: white;
+}
+
+.title .T {
+    background-color: #ff8b00;
+}
+
+.title .NY {
+    background-color: #002d72;
+}
+
+.title .C {
+    background-color: #7c8783;
+}
+
+.title .name {
+    color: black
+}
+
+hr {
+    margin: 0px !important;
+}
+
+.camera-view-container {
+    color: #5995da;
+    background-color: #d6e9f3;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap
+}
+
+.camera-options-container {
+    display: flex;
+    padding: 5px;
+    justify-content: center
+}
+
+.camera-view {
+    display: flex;
+    justify-content: center;
+    min-width: 250px;
+}
+
+.control-container {
+    position: fixed;
+    display: flex;
+    bottom: 0px;
+    height: 180px;
+    justify-content: space-between;
+    width: 100%;
+    background-image: url(assets/metal2.jpg);
+    background-size: cover;
+    padding: 2px;
+    border: 2px solid black;
+}
+
+.platform {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.platform-cardinal {
+    display: block;
+    overflow: hidden;
+}
+
+.control-section {
+    display: flex;
+    justify-content: center;
+    color: whitesmoke;
+    font-weight: bold;
+    text-shadow: 2px 2px #000;
+}
+
+.grid-item button {
+    height: 50px;
+    width: 80px;
+}
+
+.grid-item-north {
+    width: 100%;
+    text-align: center;
+}
+
+.grid-item-west {
+    float: left;
+}
+
+.grid-item-east {
+    float: right;
+}
+
+.grid-item-south {
+    width: 100%;
+    clear: both;
+    text-align: center;
+}
+
+.platform-rotate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.platform-rotate button {
+    width: 100px;
+    padding: 10px;
+    margin: 5px;
+}
+
+.control-container button {
+    font-size: 36px !important;
+}
+
+.platform-magnet {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top:
+}
+
+.platform-magnet button {
+    margin-top: 10px;
+    width: 90%;
+}
+
+.camera {}

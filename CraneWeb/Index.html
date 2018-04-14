@@ -1,139 +1,112 @@
-﻿<!doctype html>
-<html lang="en" ng-app="craneWeb">
+<html>
 
 <head>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Camera Control</title>
+    <link rel="stylesheet" href="Styles.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 
-<style>
-    html,
-    body {
-        height: 100%;
-        width: 100%;
-    }
-
-    body {
-        overflow: hidden;
-        display: table;
-        border-collapse: collapse;
-        margin: 0;
-    }
-
-    body>* {
-        display: table-row;
-    }
-
-    camera-control,
-    div.camera {
-        height: 66%;
-    }
-
-    div.controls {
-        height: 100%;
-        background-color: cornflowerblue;
-    }
-
-    div.controls>div {
-        display: table-cell;
-        vertical-align: middle;
-        text-align: center;
-        width: 33%;
-    }
-
-    button {
-        font-size: 64px;
-    }
-
-    .cardinal {
-        padding: 10px;
-    }
-
-    .cardinal button {
-        width: 100px;
-    }
-</style>
-
 <body>
-
-    <div class="camera">
-        <camera-control camera="cab"></camera-control>
+    <div class="menu-container">
+        <div class="menu">
+            <div class="title">
+                <div class="letter T">T</div>
+                <div class="letter NY">NY</div>
+                <div class="letter C">C</div>
+                <div class="letter name">Port Authority</div>
+            </div>
+            <div class="actions">
+                <div class="action-items">
+                    <div>
+                        Login
+                    </div>
+                    <div>
+                        Request Access
+                    </div>
+                    <div>
+                        <span>Status</span>
+                        <span class="status"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="camera-options-container">
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Available Cameras
+          </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+            </div>
+        </div>
+    </div>
+    <div class="camera-view-container">
+        <div class="camera-view">
+            1
+        </div>
+        <div class="camera-view">
+            2
+        </div>
+        <div class="camera-view">
+            3
+        </div>
+        <div class="camera-view">
+            4
+        </div>
+        <div class="camera-view">
+            5
+        </div>
+        <div class="camera-view">
+            6
+        </div>
     </div>
 
-    <div class="controls" ng-controller="dashboard as vm">
-        <div class="cardinal" style="border: 1px solid white;">
-            <div style="display: inline-block; margin-bottom: 10px;">
-                <button ng-click="vm.platformUp()">
+    <div class="control-container">
+        <div class="platform platform-cardinal">
+            <div class="control-section">Platform</div>
+            <div class="grid-item grid-item-north">
+                <button>
                     <i class="fas fa-angle-up"></i>
                 </button>
             </div>
-            <div style="overflow: hidden;">
-                <div style="float: left">
-                    <button ng-click="vm.platformLeft()">
-                        <i class="fas fa-angle-left"></i>
-                    </button>
-                </div>
-                <div style="float: right">
-                    <button ng-click="vm.platformRight()">
-                        <i class="fas fa-angle-right"></i>
-                    </button>
-                </div>
+            <div class="grid-item grid-item-west">
+                <button><i class="fas fa-angle-left"></i></button>
             </div>
-            <div style="display: inline-block;margin-top: 10px;">
-                <button ng-click="vm.platformDown()">
-                    <i class="fas fa-angle-down"></i>
-                </button>
+            <div class="grid-item grid-item-east">
+                <button><i class="fas fa-angle-right"></i></button>
+            </div>
+            <div class="grid-item grid-item-south">
+                <button><i class="fas fa-angle-down"></i></button>
             </div>
         </div>
-        <div style="border: 1px solid white;">
-            <span><strong>Platform Rotation</strong></span>
-            <div class="cardinal">
-                <div style="margin-bottom: 10px;">
-                    <button ng-click="vm.platformUp()">
-                        <i class="fas fa-redo"></i>
-                    </button>
-                </div>
-                <div style="margin-top: 10px;">
-                    <button ng-click="vm.platformDown()">
-                        <i class="fas fa-undo"></i>
-                    </button>
-                </div>
-            </div>
+        <div class="platform platform-rotate">
+            <div class="control-section">Platform Rotation</div>
+            <button><i class="fas fa-redo"></i></button>
+            <button><i class="fas fa-undo"></i></button>
         </div>
-        <div style="overflow: hidden; border: 1px solid white;">
-            <div style="margin-bottom: 30px"><strong>Boom and Magnet</strong></div>
-            <div style="width:100px; float: left;">
-                <button>
-                    <i class="fas fa-arrow-up"></i>
-                </button>
-                <button>
-                    <i class="fas fa-arrow-down"></i>
-                </button>
-            </div>
-            <div style="float: left;">
-                <div>Magnet</div>
-                <button style="margin-top: 0px;">
-                    Off
-                    <i class="fas fa-bolt"></i>
-                </button>
-            </div>
+        <div class="platform platform-rotate">
+            <div class="control-section">Boom</div>
+            <button>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            <button>
+                <i class="fas fa-arrow-down"></i>
+            </button>
+        </div>
+        <div class="platform platform-magnet">
+            <div class="control-section">Magnet</div>
+            <button>
+                Off <i class="fas fa-bolt"></i>
+            </button>
         </div>
     </div>
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
-    <script src="scripts/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 </body>
 
 </html>
