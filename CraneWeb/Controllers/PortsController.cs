@@ -19,7 +19,7 @@ namespace CraneWeb.Controllers
         [HttpGet, Route("api/ports/available")]
         public IHttpActionResult GetConnectedComPort()
         {
-            return Json(Driver.FindControllerComPort());
+            return Json(Driver._com);
         }
     }
 }

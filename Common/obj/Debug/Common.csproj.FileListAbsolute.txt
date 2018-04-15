@@ -1,4 +1,3 @@
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\bin\Debug\Common.dll.config
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\bin\Debug\Common.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\bin\Debug\Common.pdb
@@ -52,7 +51,7 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\bin\Deb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\bin\Debug\ru\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\bin\Debug\zh-Hant\System.Spatial.resources.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Debug\Common.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Debug\Common.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Debug\Common.pdb
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Debug\Common.csproj.CopyComplete
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache

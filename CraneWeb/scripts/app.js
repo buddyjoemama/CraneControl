@@ -2,26 +2,31 @@
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
 
 app.component('cameraControl', {
-    templateUrl: 'templates/cameraControl.html',
+    template: '<img ng-src="{{$ctrl.url}}" src="assets/ajax-loader.gif"/>',
     bindings: {
         camera: '@'
     },
     controller: function ($interval) {
         var $ctrl = this;
-        $ctrl.id = "0.7380284234367951";
+        $ctrl.id = Math.random();
 
         $interval(function () {
-            //$ctrl.url = "http://192.168.86.113:8081/out.jpg?q=30&id=" + $ctrl.id + "&r=" + new Date().getTime().toString();
-        }, 500);
+            $ctrl.url = "http://192.168.86.113:8888/out.jpg?" + Math.random();
+        }, 66);
     }
 });
 
 app.controller('appController', function ($http, ComPort) {
     var vm = this;
     vm.activePort = ComPort;
-
+    vm.magOn = false;
     vm.$onInit = function () {
         $http.put("api/control/off");
+    }
+
+    vm.activateMagnet = function () {
+        vm.magOn = !vm.magOn
+        $http.get('api/control/mag/' + vm.magOn);
     }
 });
 
@@ -58,8 +63,6 @@ app.directive('button', function ($http) {
                         });
                     }
                 });
-
-                // do something different for touch.
             });
         }
     };

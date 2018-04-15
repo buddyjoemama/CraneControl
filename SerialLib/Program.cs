@@ -50,13 +50,16 @@ namespace SerialLib
     public static class Driver
     {
         private static Dictionary<ActionSource, byte> s_chipActions = new Dictionary<ActionSource, byte>();
-        public static string _com = "COM9";
+        public static string _com;
         public static object locker = new object();
+        public static CraneOperation magOperation;
 
         static Driver()
         {
             s_chipActions.Add(ActionSource.NorthChip, 0);
             s_chipActions.Add(ActionSource.SouthChip, 0);
+            _com = FindControllerComPort();
+            magOperation = CraneOperation.GetByOpCode(CraneOperations.Magnet);
         }
 
         public static void OperateCrane(List<ControlboardOperation> operations)
@@ -92,11 +95,6 @@ namespace SerialLib
         public static void HardResetBoard()
         {
 
-        }
-
-        public static String[] EnumeratePorts()
-        {
-            return SerialPort.GetPortNames();
         }
 
         private static void Write(byte northChip, byte southChip)
@@ -175,6 +173,16 @@ namespace SerialLib
             }
 
             return null;
+        }
+
+        public static void ActivateMagnet(bool on)
+        {
+            if (on)
+                s_chipActions[ActionSource.NorthChip] |= (byte)(1 << (int)magOperation.BitPosition);
+            else
+                s_chipActions[ActionSource.NorthChip] &= 15;
+
+            WriteAll();
         }
     }
 }

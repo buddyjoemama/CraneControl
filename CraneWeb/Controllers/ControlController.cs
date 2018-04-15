@@ -25,28 +25,11 @@ namespace CraneWeb.Controllers
             return Ok();
         }
 
-        [HttpGet, Route("api/control/ports")]
-        public IHttpActionResult GetAvailablePorts()
+        [HttpGet, Route("api/control/mag/{on}")]
+        public IHttpActionResult OperateMagnet(bool on)
         {
-            return Json(SerialLib.Driver.EnumeratePorts());
-        }
-
-        [HttpGet, Route("api/actions/south")]
-        public IHttpActionResult GetSouthchipActions()
-        {
-            using (CraneDbContext context = new CraneDbContext())
-            {
-                return Json(context.CraneOperations.Where(s => s.ActionSource == ActionSource.SouthChip).ToList());
-            }
-        }
-
-        [HttpGet, Route("api/actions/north")]
-        public IHttpActionResult GetNorthChipActions()
-        {
-            using (CraneDbContext context = new CraneDbContext())
-            {
-                return Json(context.CraneOperations.Where(s => s.ActionSource == ActionSource.NorthChip).ToList());
-            }
+            Driver.ActivateMagnet(on);
+            return Ok();
         }
 
         [HttpGet, Route("api/actions/all")]

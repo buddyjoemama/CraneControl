@@ -48,6 +48,14 @@ namespace CraneWeb.Data
         public ActionSource ActionSource { get; set; }
 
         public CraneOperations OpCode { get; set; }
+
+        public static CraneOperation GetByOpCode(CraneOperations op)
+        {
+            using (CraneDbContext context = new CraneDbContext())
+            {
+                return context.CraneOperations.Single(s => s.OpCode == op);
+            }
+        }
     }
 
     public class ControlboardOperation

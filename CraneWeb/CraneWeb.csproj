@@ -102,7 +102,6 @@
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\app.js" />
     <Content Include="Styles.css" />
-    <Content Include="templates\cameraControl.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

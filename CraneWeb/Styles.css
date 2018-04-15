@@ -25,7 +25,6 @@ body {
 .actions {
     color: #7c8783;
     display: flex;
-    width: 300px;
 }
 
 .status {
@@ -47,9 +46,7 @@ body {
 
 .action-items {
     display: flex;
-    width: 100%;
     align-items: center;
-    justify-content: space-between;
 }
 
 .action-items:hover {
@@ -92,8 +89,6 @@ hr {
 }
 
 .camera-view-container {
-    color: #5995da;
-    background-color: #d6e9f3;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -188,18 +183,9 @@ div.dropdown {
     font-size: 36px !important;
 }
 
-.platform-magnet {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+.magnet {
+    height: 100px;
 }
-
-.platform-magnet button {
-    margin-top: 10px;
-    width: 90%;
-}
-
-.camera {}
 
 button.operation[on=true] {
     background-color: yellow;
@@ -207,4 +193,12 @@ button.operation[on=true] {
 
 button.operation[on=false] {
     background-color: ButtonFace;
+}
+
+.mag[active=true] svg {
+    color: red;
+}
+
+.mag {
+    flex: 1;
 }
