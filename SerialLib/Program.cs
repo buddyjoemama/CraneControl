@@ -51,6 +51,7 @@ namespace SerialLib
     {
         private static Dictionary<ActionSource, byte> s_chipActions = new Dictionary<ActionSource, byte>();
         public static string _com = "COM9";
+        public static object locker = new object();
 
         static Driver()
         {
@@ -58,7 +59,7 @@ namespace SerialLib
             s_chipActions.Add(ActionSource.SouthChip, 0);
         }
 
-        public static void OperateCrane(params ControlboardOperation[] operations)
+        public static void OperateCrane(List<ControlboardOperation> operations)
         {
             foreach(var op in operations)
             {
@@ -74,6 +75,11 @@ namespace SerialLib
             }
 
             WriteAll();
+        }
+
+        public static void OperateCrane(ControlboardOperation op)
+        {
+            OperateCrane(new List<ControlboardOperation> { op });
         }
 
         public static void Off()
@@ -95,10 +101,13 @@ namespace SerialLib
 
         private static void Write(byte northChip, byte southChip)
         {
-            using (SerialPort port = new SerialPort(_com))
+            lock (locker)
             {
-                port.Open();
-                port.Write(new byte[] { northChip, southChip }, 0, 2);
+                using (SerialPort port = new SerialPort(_com))
+                {
+                    port.Open();
+                    port.Write(new byte[] { northChip, southChip }, 0, 2);
+                }
             }
         }
 
@@ -106,6 +115,66 @@ namespace SerialLib
         {
             var actions = s_chipActions.Values.Select(s => s).ToArray();
             Write(actions[0], actions[1]);
+        }
+
+        public static bool TestPort(string portName)
+        {
+            try
+            {
+                String testPort = SerialPort.GetPortNames().SingleOrDefault(s => portName.Contains(s));
+                if (testPort != null)
+                {
+                    using (SerialPort port = new SerialPort(testPort))
+                    {
+                        port.ReadTimeout = 2500;
+                        port.Open();
+                        port.Write(new byte[] { 0, 0 }, 0, 2);
+
+                        byte[] inBuffer = new byte[port.BytesToRead];
+                        port.Read(inBuffer, 0, port.BytesToRead);
+
+                        var val = Encoding.Default.GetString(inBuffer);
+
+                        return String.Compare(val, "ok", true) == 0;
+                    }
+                }
+            }
+            catch
+            {
+                return false;
+            }
+
+            return false;
+        }
+
+        public static String FindControllerComPort()
+        {
+            foreach (var name in SerialPort.GetPortNames())
+            {
+                try
+                {
+                    using (SerialPort port = new SerialPort(name))
+                    {
+                        port.ReadTimeout = 500;
+                        port.Open();
+                        port.Write(new byte[] { 0, 0 }, 0, 2);
+
+                        Thread.Sleep(250);
+                        byte[] inBuffer = new byte[port.BytesToRead];
+                        port.Read(inBuffer, 0, port.BytesToRead);
+
+                        var val = Encoding.Default.GetString(inBuffer);
+
+                        if (String.Compare(val, "ok", true) == 0)
+                            return name;
+                    }
+                }
+                catch
+                {
+                }
+            }
+
+            return null;
         }
     }
 }

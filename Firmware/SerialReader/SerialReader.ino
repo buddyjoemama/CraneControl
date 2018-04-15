@@ -45,6 +45,7 @@ void loop()
   if(Serial.available() > 0) {
     if(Serial.readBytes(buffer, 2) > 0) {
       Shift(buffer[0], buffer[1]);
+      Serial.write("ok");
     }
   }
 }

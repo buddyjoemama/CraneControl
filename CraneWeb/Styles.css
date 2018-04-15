@@ -25,17 +25,24 @@ body {
 .actions {
     color: #7c8783;
     display: flex;
-    width: 250px;
+    width: 300px;
 }
 
 .status {
     width: 10px;
     height: 10px;
-    background: green;
     display: block;
     float: left;
     margin-top: 8px;
     margin-right: 5px;
+}
+
+.status[enabled=true] {
+    background: green;
+}
+
+.status[enabled=false] {
+    background: red;
 }
 
 .action-items {
@@ -95,7 +102,11 @@ hr {
 .camera-options-container {
     display: flex;
     padding: 5px;
-    justify-content: center
+    justify-content: center;
+}
+
+div.dropdown {
+    padding: 0px 5px;
 }
 
 .camera-view {
@@ -181,7 +192,6 @@ hr {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    margin-top:
 }
 
 .platform-magnet button {
@@ -190,3 +200,11 @@ hr {
 }
 
 .camera {}
+
+button.operation[on=true] {
+    background-color: yellow;
+}
+
+button.operation[on=false] {
+    background-color: ButtonFace;
+}

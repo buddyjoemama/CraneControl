@@ -11,24 +11,10 @@ namespace CraneWeb.Controllers
 {
     public class ControlController : ApiController
     {
-        [HttpGet, Route("api/control/operate/{northChip}/{southChip}/{mag}")]
-        public IHttpActionResult Operate(NorthChipActions northChip, SouthChipActions southChip, bool mag = false)
-        {
-            //SerialLib.Driver.Control(CraneActions.On, northChip, southChip, mag);
-
-            //return Ok(new
-            //{
-            //    NorthChip = Enum.GetName(typeof(NorthChipActions), northChip),
-            //    SouthChip = Enum.GetName(typeof(SouthChipActions), southChip),
-            //    MagOn = mag
-            //});
-
-            return null;
-        }
-
         [HttpPost]
-        public IHttpActionResult Operate(ControlboardOperation op)
+        public IHttpActionResult Operate(List<ControlboardOperation> ops)
         {
+            Driver.OperateCrane(ops);
             return Ok();
         }
 

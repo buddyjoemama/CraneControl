@@ -1,4 +1,5 @@
-var app = angular.module('craneWeb', []);
+
+var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
 
 app.component('cameraControl', {
     templateUrl: 'templates/cameraControl.html',
@@ -15,6 +16,15 @@ app.component('cameraControl', {
     }
 });
 
+app.controller('appController', function ($http, ComPort) {
+    var vm = this;
+    vm.activePort = ComPort;
+
+    vm.$onInit = function () {
+        $http.put("api/control/off");
+    }
+});
+
 app.directive('button', function ($http) {
     return {
         restrict: 'E',
@@ -22,17 +32,51 @@ app.directive('button', function ($http) {
             op: '@',
         },
         link: function (scope, element, attrs) {
+            if (!scope.op)
+                return;
 
+            attrs.$set('on', false);
             $http.get('api/actions/all').then(function (result) {
-                element.on('click', function () {
+                element.on('mousedown', function () {
                     var el = result.data[scope.op];
-                    $http.post('api/control', {
+                    $http.post('api/control', [{
                         Operation: el,
                         Action: 'On'
+                    }]).then(function (result) {
+                        attrs.$set('on', true);
                     });
                 });
+
+                element.on('mouseout mouseup', function (x) {
+                    if (attrs['on'] == true) {
+                        var el = result.data[scope.op];
+                        $http.post('api/control', [{
+                            Operation: el,
+                            Action: 'Off'
+                        }]).then(function (result) {
+                            attrs.$set('on', false);
+                        });
+                    }
+                });
+
+                // do something different for touch.
             });
         }
     };
+});
+
+function loadConfig() {
+    var initInjector = angular.injector(["ng"]);
+    var $http = initInjector.get("$http");
+
+    return $http.get('api/ports/available').then(function (res) {
+        app.constant('ComPort', res.data);
+    });
+}
+
+loadConfig().then(function () {
+    angular.element(function () {
+        angular.bootstrap(document, ['craneWeb']);
+    });
 });
 

@@ -47,5 +47,12 @@ namespace Tests
 
             Driver.Off();
         }
+
+        [TestMethod]
+        public void TestPort()
+        {
+            Assert.IsTrue(Driver.TestPort("COM9"));
+            Assert.IsFalse(Driver.TestPort("COM4"));
+        }
     }
 }

@@ -11,3 +11,4 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\obj\Debug\CraneWeb.Data.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\obj\Debug\CraneWeb.Data.Migrations.InitialDb.resources
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\obj\Debug\CraneWeb.Data.csproj.GenerateResource.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\obj\Debug\CraneWeb.Data.csprojResolveAssemblyReference.cache
