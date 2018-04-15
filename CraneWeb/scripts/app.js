@@ -15,36 +15,24 @@ app.component('cameraControl', {
     }
 });
 
-app.component('controlDashboard', {
-    templateUrl: 'templates/controlDashboard.html',
-    controller: function ($http) {
+app.directive('button', function ($http) {
+    return {
+        restrict: 'E',
+        scope: {
+            op: '@',
+        },
+        link: function (scope, element, attrs) {
 
-    }
+            $http.get('api/actions/all').then(function (result) {
+                element.on('click', function () {
+                    var el = result.data[scope.op];
+                    $http.post('api/control', {
+                        Operation: el,
+                        Action: 'On'
+                    });
+                });
+            });
+        }
+    };
 });
 
-
-app.controller('dashboard', function ($http) {
-
-    var vm = this;
-    vm.mag = false;
-
-    vm.control = function (northChip, southChip, mag) {
-        $http.get('api/control/operate/' + northChip + "/" + southChip + "/" + mag);
-    }
-
-    vm.platformUp = function () {
-        vm.control(-1, 4, vm.mag);
-    }
-
-    vm.platformLeft = function () {
-        vm.control(-1, 3, vm.mag);
-    }
-
-    vm.platformDown = function () {
-        vm.control(-1, 5, vm.mag);
-    }
-
-    vm.platformRight = function () {
-        vm.control(-1, 2, vm.mag);
-    }
-});

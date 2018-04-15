@@ -1,4 +1,5 @@
-﻿using Open.Nat;
+﻿using CraneWeb.Data;
+using Open.Nat;
 using System;
 using System.Collections.Generic;
 using System.IO.Ports;
@@ -48,37 +49,43 @@ namespace SerialLib
 
     public static class Driver
     {
-        private static byte s_NorthChip = (byte)CraneActions.Off;
-        private static byte s_SouthChip = (byte)CraneActions.Off;
+        private static Dictionary<ActionSource, byte> s_chipActions = new Dictionary<ActionSource, byte>();
         public static string _com = "COM9";
 
-        public static void Control(CraneActions craneActions, NorthChipActions north, SouthChipActions south, bool magOn = false)
+        static Driver()
         {
-            if (north != NorthChipActions.Deactivate)
-                s_NorthChip = (byte)(1 << (int)north);
-            else
-                s_NorthChip = 0;
-
-            if (south != SouthChipActions.Deactivate)
-                s_SouthChip = (byte)(1 << (int)south);
-            else
-                s_SouthChip = 0;
-
-            if (magOn)
-                s_NorthChip |= (byte)(1 << ((int)MagActions.On));
-
-            if (craneActions == CraneActions.Off)
-                s_NorthChip = s_SouthChip = 0;
-
-            Write();
+            s_chipActions.Add(ActionSource.NorthChip, 0);
+            s_chipActions.Add(ActionSource.SouthChip, 0);
         }
 
-        public static void Activate(CraneActions action)
+        public static void OperateCrane(params ControlboardOperation[] operations)
         {
-            if (action == CraneActions.Off)
-                s_NorthChip = s_SouthChip = 0;
+            foreach(var op in operations)
+            {
+                if (op.Action == CraneOperationAction.Off)
+                {
+                    s_chipActions[op.Operation.ActionSource] = 0;
+                    continue;
+                }
+                else
+                {
+                    s_chipActions[op.Operation.ActionSource] |= (byte)(1 << (int)op.Operation.BitPosition);
+                }
+            }
 
-            Write();
+            WriteAll();
+        }
+
+        public static void Off()
+        {
+            s_chipActions[ActionSource.SouthChip] = 0;
+            s_chipActions[ActionSource.NorthChip] = 0;
+            WriteAll();
+        }
+
+        public static void HardResetBoard()
+        {
+
         }
 
         public static String[] EnumeratePorts()
@@ -86,13 +93,19 @@ namespace SerialLib
             return SerialPort.GetPortNames();
         }
 
-        private static void Write()
+        private static void Write(byte northChip, byte southChip)
         {
             using (SerialPort port = new SerialPort(_com))
             {
                 port.Open();
-                port.Write(new byte[] { s_NorthChip, s_SouthChip }, 0, 2);
+                port.Write(new byte[] { northChip, southChip }, 0, 2);
             }
+        }
+
+        private static void WriteAll()
+        {
+            var actions = s_chipActions.Values.Select(s => s).ToArray();
+            Write(actions[0], actions[1]);
         }
     }
 }

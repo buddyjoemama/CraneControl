@@ -13,3 +13,12 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\SerialLib.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\CraneWeb.Data.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\EntityFramework.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\CraneWeb.Data.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\CraneWeb.Data.dll.config
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\EntityFramework.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csprojResolveAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\SerialLib.dll.config
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\EntityFramework.SqlServer.xml
