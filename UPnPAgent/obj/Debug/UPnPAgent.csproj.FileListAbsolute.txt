@@ -64,3 +64,7 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.exe
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.exe.manifest
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\UPnPAgent.application
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.exe.manifest
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.application

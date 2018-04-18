@@ -12,6 +12,7 @@ namespace CraneAzureFunctions
 {
     public static class Forwarder
     {
+        // http://http://cranedirector.azurewebsites.net/api/forwarder
         [FunctionName("Forwarder")]
         public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequestMessage req, TraceWriter log)
         {

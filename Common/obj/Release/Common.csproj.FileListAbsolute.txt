@@ -55,3 +55,4 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Rel
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Release\Common.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Release\Common.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Release\Common.csprojResolveAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Common\obj\Release\Common.csproj.CopyComplete

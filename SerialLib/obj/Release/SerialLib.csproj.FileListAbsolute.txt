@@ -1,0 +1,17 @@
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\SerialLib.dll.config
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\SerialLib.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\SerialLib.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\CraneWeb.Data.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\EntityFramework.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\Open.Nat.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\CraneWeb.Data.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\CraneWeb.Data.dll.config
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\EntityFramework.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Release\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Release\SerialLib.csprojResolveAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Release\SerialLib.csproj.CoreCompileInputs.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Release\SerialLib.csproj.CopyComplete
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Release\SerialLib.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Release\SerialLib.pdb

@@ -18,6 +18,7 @@ namespace Common.Configuration
             public static String IPAddress = "IPAddress";
             public static String PublicPort = "PublicPort";
             public static String PrivatePort = "PrivatePort";
+            public static String PrivateIP = "PrivateIP";
         }
 
         static StorageHelper()

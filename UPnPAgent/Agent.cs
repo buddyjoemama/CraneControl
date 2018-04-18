@@ -8,6 +8,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,7 @@ namespace UPnPAgent
                     StorageHelper.StoreSetting(StorageHelper.StorageKeys.IPAddress, ip.ToString());
                     StorageHelper.StoreSetting(StorageHelper.StorageKeys.PublicPort, serverPublicPort.ToString());
                     StorageHelper.StoreSetting(StorageHelper.StorageKeys.PrivatePort, serverPrivatePort.ToString());
+                    StorageHelper.StoreSetting(StorageHelper.StorageKeys.PrivateIP, GetLocalIPAddress());
 
                     foreach (var m in await device.GetAllMappingsAsync())
                     {
@@ -72,6 +74,19 @@ namespace UPnPAgent
 
                 await Task.Delay(TimeSpan.FromMinutes(delay));
             }
+        }
+
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
