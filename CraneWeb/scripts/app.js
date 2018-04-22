@@ -11,8 +11,8 @@ app.component('cameraControl', {
         $ctrl.id = Math.random();
 
         $interval(function () {
-            $ctrl.url = "http://192.168.86.113:8888/out.jpg?" + Math.random();
-        }, 66);
+            $ctrl.url = "http://66.66.139.128:8888/out.jpg?" + Math.random();
+        }, 200);
     }
 });
 
