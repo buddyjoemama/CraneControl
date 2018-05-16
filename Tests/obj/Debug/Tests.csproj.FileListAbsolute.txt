@@ -30,3 +30,35 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debu
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.pdb
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Source\CraneProject\Tests\bin\Debug\Tests.dll.config
+C:\Source\CraneProject\Tests\bin\Debug\Tests.dll
+C:\Source\CraneProject\Tests\bin\Debug\Tests.pdb
+C:\Source\CraneProject\Tests\bin\Debug\Common.dll
+C:\Source\CraneProject\Tests\bin\Debug\CraneWeb.Data.dll
+C:\Source\CraneProject\Tests\bin\Debug\EntityFramework.dll
+C:\Source\CraneProject\Tests\bin\Debug\EntityFramework.SqlServer.dll
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Source\CraneProject\Tests\bin\Debug\SerialLib.dll
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.dll
+C:\Source\CraneProject\Tests\bin\Debug\Newtonsoft.Json.dll
+C:\Source\CraneProject\Tests\bin\Debug\Common.pdb
+C:\Source\CraneProject\Tests\bin\Debug\Common.dll.config
+C:\Source\CraneProject\Tests\bin\Debug\CraneWeb.Data.pdb
+C:\Source\CraneProject\Tests\bin\Debug\CraneWeb.Data.dll.config
+C:\Source\CraneProject\Tests\bin\Debug\SerialLib.pdb
+C:\Source\CraneProject\Tests\bin\Debug\SerialLib.dll.config
+C:\Source\CraneProject\Tests\bin\Debug\EntityFramework.xml
+C:\Source\CraneProject\Tests\bin\Debug\EntityFramework.SqlServer.xml
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
+C:\Source\CraneProject\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.xml
+C:\Source\CraneProject\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+C:\Source\CraneProject\Tests\obj\Debug\Tests.csproj.CoreCompileInputs.cache
+C:\Source\CraneProject\Tests\obj\Debug\Tests.csproj.CopyComplete
+C:\Source\CraneProject\Tests\obj\Debug\Tests.dll
+C:\Source\CraneProject\Tests\obj\Debug\Tests.pdb

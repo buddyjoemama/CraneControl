@@ -2,6 +2,7 @@
 using SerialLib;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -14,8 +15,12 @@ namespace CraneWeb.Controllers
         [HttpPost]
         public IHttpActionResult Operate(List<ControlboardOperation> ops)
         {
+            var timer = Stopwatch.StartNew();
+
             Driver.OperateCrane(ops);
-            return Ok();
+            timer.Stop();
+
+            return Json(timer.ElapsedMilliseconds);
         }
 
         [HttpPut, Route("api/control/off")]
