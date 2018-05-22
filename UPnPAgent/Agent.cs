@@ -34,13 +34,10 @@ namespace UPnPAgent
         public async Task Run()
         {
             int.TryParse(ConfigurationManager.AppSettings["DelayMinutes"], out int delay);
-            int.TryParse(ConfigurationManager.AppSettings["ServerPublicPort"], out int serverPublicPort);
-            int.TryParse(ConfigurationManager.AppSettings["ServerPrivatePort"], out int serverPrivatePort);
 
             IPAddress externalIp = IPAddress.None;
             var discoverer = new NatDiscoverer();
-            var device = await discoverer.DiscoverDeviceAsync();
-            
+            var device = await discoverer.DiscoverDeviceAsync();            
 
             while (true)
             {
@@ -50,26 +47,26 @@ namespace UPnPAgent
                 {
                     externalIp = ip;
 
-                    StorageHelper.StoreSetting(StorageHelper.StorageKeys.IPAddress, ip.ToString());
-                    StorageHelper.StoreSetting(StorageHelper.StorageKeys.PublicPort, serverPublicPort.ToString());
-                    StorageHelper.StoreSetting(StorageHelper.StorageKeys.PrivatePort, serverPrivatePort.ToString());
-                    StorageHelper.StoreSetting(StorageHelper.StorageKeys.PrivateIP, GetLocalIPAddress());
+                    //StorageHelper.StoreSetting(StorageHelper.StorageKeys.IPAddress, ip.ToString());
+                    //StorageHelper.StoreSetting(StorageHelper.StorageKeys.WebServerPort, ConfigurationManager.AppSettings["WebServerPort"]);
+                    //StorageHelper.StoreSetting(StorageHelper.StorageKeys.PrivateIP, GetLocalIPAddress());
 
-                    foreach (var m in await device.GetAllMappingsAsync())
+                    foreach (var port in ConfigurationManager.AppSettings["ServerPorts"].Split(new char[] { ',' })
+                        .Select(s=>int.Parse(s)))
                     {
                         try
                         {
-                            await device.DeletePortMapAsync(m);
+                            await device.DeletePortMapAsync(new Mapping(Protocol.Tcp, port, port));
+                        }
+                        catch { }
+
+                        try
+                        {
+                            var mapping = new Mapping(Protocol.Tcp, port, port, "port_mapping");
+                            await device.CreatePortMapAsync(mapping);
                         }
                         catch { }
                     }
-
-                    try
-                    {
-                        var mapping = new Mapping(Protocol.Tcp, serverPrivatePort, serverPublicPort, "testing");
-                        await device.CreatePortMapAsync(mapping);
-                    }
-                    catch { }
                 }
 
                 await Task.Delay(TimeSpan.FromMinutes(delay));

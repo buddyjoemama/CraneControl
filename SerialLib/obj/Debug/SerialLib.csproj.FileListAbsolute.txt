@@ -22,3 +22,20 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.pdb
+C:\Source\CraneProject\SerialLib\bin\Debug\SerialLib.dll.config
+C:\Source\CraneProject\SerialLib\bin\Debug\SerialLib.dll
+C:\Source\CraneProject\SerialLib\bin\Debug\SerialLib.pdb
+C:\Source\CraneProject\SerialLib\bin\Debug\CraneWeb.Data.dll
+C:\Source\CraneProject\SerialLib\bin\Debug\EntityFramework.dll
+C:\Source\CraneProject\SerialLib\bin\Debug\EntityFramework.SqlServer.dll
+C:\Source\CraneProject\SerialLib\bin\Debug\Open.Nat.dll
+C:\Source\CraneProject\SerialLib\bin\Debug\CraneWeb.Data.pdb
+C:\Source\CraneProject\SerialLib\bin\Debug\CraneWeb.Data.dll.config
+C:\Source\CraneProject\SerialLib\bin\Debug\EntityFramework.xml
+C:\Source\CraneProject\SerialLib\bin\Debug\EntityFramework.SqlServer.xml
+C:\Source\CraneProject\SerialLib\bin\Debug\Open.Nat.xml
+C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csprojResolveAssemblyReference.cache
+C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csproj.CoreCompileInputs.cache
+C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csproj.CopyComplete
+C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.dll
+C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.pdb

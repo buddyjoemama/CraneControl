@@ -19,7 +19,7 @@
                 <div class="action-items">
                     <div>
                         <span ng-if="vm.activePort != null" ng-bind="vm.activePort"></span>
-                        <span ng-if="vm.activePort == null">Not connected</span>
+                        <span ng-if="vm.activePort == null">No controller found.</span>
                         <span class="status" enabled="{{vm.activePort != null}}"></span>
                     </div>
                 </div>

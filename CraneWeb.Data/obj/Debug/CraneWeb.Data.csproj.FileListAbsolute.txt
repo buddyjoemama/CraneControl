@@ -11,3 +11,17 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\obj\Debug\CraneWeb.Data.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\obj\Debug\CraneWeb.Data.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb.Data\obj\Debug\CraneWeb.Data.pdb
+C:\Source\CraneProject\CraneWeb.Data\bin\Debug\CraneWeb.Data.dll.config
+C:\Source\CraneProject\CraneWeb.Data\bin\Debug\CraneWeb.Data.dll
+C:\Source\CraneProject\CraneWeb.Data\bin\Debug\CraneWeb.Data.pdb
+C:\Source\CraneProject\CraneWeb.Data\bin\Debug\EntityFramework.dll
+C:\Source\CraneProject\CraneWeb.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Source\CraneProject\CraneWeb.Data\bin\Debug\EntityFramework.xml
+C:\Source\CraneProject\CraneWeb.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.Migrations.InitialDb.resources
+C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.csproj.GenerateResource.cache
+C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.csproj.CoreCompileInputs.cache
+C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.csproj.CopyComplete
+C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.dll
+C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.pdb
+C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.csprojResolveAssemblyReference.cache

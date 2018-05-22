@@ -100,8 +100,14 @@ namespace SerialLib
 
         private static void Write(byte northChip, byte southChip)
         {
+            if (_com == null)
+                _com = FindControllerComPort();
+
             lock (locker)
             {
+                if (_com == null)
+                    _com = FindControllerComPort();
+
                 using (SerialPort port = new SerialPort(_com))
                 {
                     port.Open();

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
-  <asmv1:assemblyIdentity name="UPnPAgent.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
+  <asmv1:assemblyIdentity name="UPnPAgent.exe" version="1.0.0.2" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="UPnPAgent" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ITvssaSFgxm9cMojnrLYPXPsVs0Q8k9nKXpSJIFPRLY=</dsig:DigestValue>
+        <dsig:DigestValue>6KGV9/AAG6DBaJfsoEdwTcTfGSXn2LKMATYP+9ex/oE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -582,24 +582,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPnPAgent.exe" size="12248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPnPAgent.exe" size="11736">
       <assemblyIdentity name="UPnPAgent" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9TIFBRwvUbHk9QyMIgO653/nxum1fzdNzmLiREHvGtU=</dsig:DigestValue>
+        <dsig:DigestValue>aaY/0yVOKIATzU0PpQZrv9F7yMbTGClVHfN6kBgkP+c=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="UPnPAgent.exe.config" size="1711">
+  <file name="UPnPAgent.exe.config" size="1710">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>k8DFZJYDdJb2Q1EsiGU3hx3lLgAigqPlI1JnGgGy+VU=</dsig:DigestValue>
+      <dsig:DigestValue>v5GLbTg3ArVAH//V7erBClfhNcPqzkLKpuc6uT04dOU=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
