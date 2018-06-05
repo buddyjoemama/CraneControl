@@ -1,41 +1,83 @@
 <html>
-    <head>
-        <link rel="stylesheet" href="Content/Styles.css"/>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    </head>
-    <body>
-        <style>
-            div[disabled] {
-                color: lightgray;
-            }
 
-            div[disabled] button {
-                color: inherit;
-                cursor: inherit;
-                pointer-events: inherit;
+<head>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="Content/Styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <style>
+        div.btn-group-left-right {
+            margin: 5px 0px
+        }
+
+        div.btn-group-left-right button {
+            float: left;
+            width: 50%;
+        }
+
+        div.dir-buttons button {
+            height: 65px;
+        }
+
+        @media (min-width: 992px) {
+            .col-md-8 {
+                padding: 0px;
             }
-        </style>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="page-header" style="margin-bottom: 0px;margin-top: 0px;">
-                        <h1>T-NY-C <small>Port Authority</small></h1>
-                    </div>
+        }
+
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header" style="margin-bottom: 0px;margin-top: 0px;">
+                    <h1>T-NY-C <small>Port Authority</small></h1>
                 </div>
-            </div>
-            <div class="row" style="margin: 0px; padding: 0px;">
-                <div class="col-md-12">
-                    <h3 class="text-center">
-                        <img src="assets/metal2.jpg" style="height:auto; 350px; max-width: 100%;overflow: hidden;">
-                    </h3>
-                </div>
-            </div>
-            <div class="navbar navbar-fixed-bottom" style="background: red;">
-                ewerwewrerwe
             </div>
         </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2 text-center">
+                <h3>Platform</h3>
+                <button class="btn btn-lg btn-block">
+                    <i class="fas fa-angle-up fa-3x"></i>
+                </button>
+                <div class="btn-group-left-right" style="overflow: hidden">
+                    <button class="btn btn-lg" style="float:left; width: 50%;">
+                        <i class="fas fa-angle-left fa-3x"></i>
+                    </button>
+                    <button class="btn btn-lg" style="float: left; width: 50%">
+                        <i class="fas fa-angle-right fa-3x"></i>
+                    </button>
+                </div>
+                <button class="btn btn-lg btn-block">
+                    <i class="fas fa-angle-down fa-3x"></i>
+                </button>
+                <br>
+                <div class="btn-group-left-right" style="overflow: hidden">
+                    <button class="btn btn-lg" op="CabCW"><i class="fas fa-redo fa-2x"></i></button>
+                    <button class="btn btn-lg" op="CabCCW"><i class="fas fa-undo fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="col-md-8 text-center">
+                <img src="assets/metal2.jpg" style="max-height: 100%; height:auto; max-width: 100%;overflow: hidden; margin: auto;">
+            </div>
+            <div class="col-md-2 text-center">
+                <h3>Boom</h3>
+                <button class="btn btn-lg btn-block">
+                    <i class="fas fa-angle-up fa-3x"></i>
+                </button>
+                <button class="btn btn-lg btn-block">
+                    <i class="fas fa-angle-down fa-3x"></i>
+                </button>
+                <h3>Hook</h3>
+            </div>
+        </div>
+    </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+</body>
+
 </html>
