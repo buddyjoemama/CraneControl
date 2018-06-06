@@ -26,7 +26,7 @@ namespace CraneWeb.Data.Migrations
             CraneOperation platformNorth = new CraneOperation { Name = "Platform North", ActionSource = ActionSource.SouthChip, BitPosition = 4, OpCode = CraneOperations.PlatformNorth };
             CraneOperation platformSouth = new CraneOperation { Name = "Platform South", ActionSource = ActionSource.SouthChip, BitPosition = 5,  OpCode = CraneOperations.PlatformSouth };
 
-            CraneOperation magOn = new CraneOperation { Name = "Magnet", ActionSource = ActionSource.NorthChip, BitPosition = 4, OpCode = CraneOperations.Magnet };
+            CraneOperation magOn = new CraneOperation { Name = "Magnet", ActionSource = ActionSource.SouthChip, BitPosition = 6, OpCode = CraneOperations.Magnet };
 
             context.CraneOperations.AddOrUpdate(s => s.OpCode, cabCW);
             context.CraneOperations.AddOrUpdate(s => s.OpCode, cabCCW);

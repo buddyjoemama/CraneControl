@@ -1,6 +1,10 @@
 
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
 
+app.factory('settings', function ($http) {
+    return $http.get('api/settings/all');
+});
+
 app.component('cameraControl', {
     template: '<img ng-src="{{$ctrl.url}}" src="assets/ajax-loader.gif"/>',
     bindings: {
@@ -30,56 +34,42 @@ app.controller('appController', function ($http, ComPort) {
     }
 });
 
-app.directive('button', function ($http) {
+app.directive('button', function (settings, $http) {
     return {
         restrict: 'E',
         scope: {
             op: '@',
         },
         link: function (scope, element, attrs) {
-            if (!scope.op)
-                return;
-
-            attrs.$set('on', false);
-            $http.get('api/actions/all').then(function (result) {
-                element.on('mousedown', function () {
-                    var el = result.data[scope.op];
-                    $http.post('api/control', [{
-                        Operation: el,
-                        Action: 'On'
-                    }]).then(function (result) {
-                        attrs.$set('on', true);
-                    });
-                });
-
-                element.on('mouseout mouseup', function (x) {
-                    if (attrs['on'] == true) {
-                        var el = result.data[scope.op];
-                        $http.post('api/control', [{
-                            Operation: el,
-                            Action: 'Off'
-                        }]).then(function (result) {
-                            attrs.$set('on', false);
-                        });
-                    }
-                });
+            attrs.$set('disabled', true);
+            settings.then(function (result) {
+                attrs.$set('disabled', false);
+                loadButtonActions(attrs, scope, element, result.data);
             });
         }
     };
+
+    function loadButtonActions(attrs, scope, element, result) {
+        element.on('mousedown', function () {
+            var el = result.operations[scope.op];
+            $http.post('api/control', [{
+                Operation: el,
+                Action: 'On'
+            }]).then(function (result) {
+                attrs.$set('on', true);
+            });
+        });
+
+        element.on('mouseout mouseup', function (x) {
+            if (attrs['on'] == true) {
+                var el = result.operations[scope.op];
+                $http.post('api/control', [{
+                    Operation: el,
+                    Action: 'Off'
+                }]).then(function (result) {
+                    attrs.$set('on', false);
+                });
+            }
+        });
+    }
 });
-
-function loadConfig() {
-    var initInjector = angular.injector(["ng"]);
-    var $http = initInjector.get("$http");
-
-    return $http.get('api/ports/available').then(function (res) {
-        app.constant('ComPort', res.data);
-    });
-}
-
-loadConfig().then(function () {
-    angular.element(function () {
-        angular.bootstrap(document, ['craneWeb']);
-    });
-});
-

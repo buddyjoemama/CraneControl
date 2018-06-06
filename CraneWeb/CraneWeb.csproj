@@ -92,7 +92,7 @@
     <Content Include="assets\sample.jpg" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
-    <Content Include="Index.html" />
+    <Content Include="Home.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-touch.js" />
     <Content Include="scripts\angular-touch.min.js" />
@@ -103,14 +103,14 @@
     <Content Include="scripts\angular.js" />
     <Content Include="scripts\angular.min.js" />
     <Content Include="scripts\app.js" />
-    <Content Include="Styles.css" />
+    <Content Include="Content\Styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CameraController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
-    <Compile Include="Controllers\PortsController.cs" />
+    <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
