@@ -19,19 +19,8 @@ namespace Tests
             using (CraneDbContext context = new CraneDbContext())
             {
                 Dictionary<CraneOperations, CraneOperation> allOps =
-                    context.CraneOperations.ToDictionary(k => k.OpCode, v=>v);
-
-                Driver.OperateCrane(new ControlboardOperation
-                {
-                    Action = CraneOperationAction.On,
-                    Operation = allOps[CraneOperations.BoomDown]
-                });
-
-                Driver.OperateCrane(new ControlboardOperation
-                {
-                    Action = CraneOperationAction.Off,
-                    Operation = allOps[CraneOperations.BoomDown]
-                });
+                    context.CraneOperations.OrderBy(s=>s.ActionSource)
+                        .ToDictionary(k => k.OpCode, v=>v);
 
                 foreach(var op in allOps)
                 {

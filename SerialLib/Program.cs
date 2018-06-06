@@ -98,7 +98,7 @@ namespace SerialLib
 
         }
 
-        private static void Write(byte northChip, byte southChip)
+        public static void Write(byte northChip, byte southChip)
         {
             if (_com == null)
                 _com = FindControllerComPort();
@@ -185,7 +185,7 @@ namespace SerialLib
         public static void ActivateMagnet(bool on)
         {
             if (on)
-                s_chipActions[ActionSource.NorthChip] |= (byte)(1 << (int)magOperation.BitPosition);
+                s_chipActions[ActionSource.NorthChip] |= (byte)(1 << (int)6);
             else
                 s_chipActions[ActionSource.NorthChip] &= 15;
 

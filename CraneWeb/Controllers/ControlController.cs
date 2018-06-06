@@ -36,18 +36,5 @@ namespace CraneWeb.Controllers
             Driver.ActivateMagnet(on);
             return Ok();
         }
-
-        [HttpGet, Route("api/actions/all")]
-        public IHttpActionResult GetAllActions()
-        {
-            using (CraneDbContext context = new CraneDbContext())
-            {
-                context.Configuration.ProxyCreationEnabled = false;
-                var operations = context.CraneOperations
-                    .ToDictionary(k => k.OpCode.ToString(), v => v);
-
-                return Json(operations);
-            }
-        }
     }
 }
