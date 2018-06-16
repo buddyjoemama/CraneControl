@@ -5,19 +5,47 @@ app.factory('settings', function ($http) {
     return $http.get('api/settings/all');
 });
 
-app.component('cameraControl', {
-    template: '<img ng-src="{{$ctrl.url}}" src="assets/ajax-loader.gif"/>',
+app.component('camera', {
+    template: '<img ng-src="{{$ctrl.url}}" src="assets/ajax-loader.gif" image-onload="$ctrl.imageLoaded()"/>',
     bindings: {
         camera: '@'
     },
-    controller: function ($interval) {
+    controller: function ($interval, $http) {
         var $ctrl = this;
-        $ctrl.id = Math.random();
 
-        $interval(function () {
-            $ctrl.url = "http://66.66.139.128:8888/out.jpg?" + Math.random();
-        }, 200);
+        $ctrl.$onInit = function () {
+            //$interval(function () {
+            //    $ctrl.url = "api/camera?r=" + new Date().getTime();
+            //}, 200);
+        }
+
+        $ctrl.imageLoaded = function () {
+
+            if (!$ctrl.id) {
+                $http.get('api/camera').then(function (result) {
+                    $ctrl.id = result.data.id;
+                    $ctrl.url = "http://localhost:8081/out.jpg?q=30&id=" + result.data.id + "&r=" + new Date().getTime().toString();
+                });
+            }
+            else {
+                $ctrl.url = "http://localhost:8081/out.jpg?q=30&id=" + $ctrl.id + "&r=" + new Date().getTime().toString();
+            }
+        }
     }
+});
+
+app.directive('imageOnload', function () {
+    return {
+        restrict: 'A',
+        link: function (scope, element, attrs) {
+            element.bind('load', function () {
+                // call the function that was passed
+                scope.$apply(attrs.imageOnload);
+
+                // usage: <img ng-src="src" image-onload="imgLoadedCallback()" />
+            });
+        }
+    };
 });
 
 app.controller('appController', function ($http, ComPort) {
@@ -32,6 +60,19 @@ app.controller('appController', function ($http, ComPort) {
         vm.magOn = !vm.magOn
         $http.get('api/control/mag/' + vm.magOn);
     }
+});
+
+app.directive('loader', function (settings) {
+    return {
+        restrict: 'E',
+        template: '<div ng-hide="hide == true"><h1><strong>Loading camera...</strong></h1></div>',
+        link: function (scope, element, attrs) {
+            scope.hide = false;
+            settings.then(function (result) {
+                scope.hide = true;
+            });
+        }
+    };
 });
 
 app.directive('button', function (settings, $http) {
