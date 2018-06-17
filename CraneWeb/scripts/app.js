@@ -10,7 +10,7 @@ app.component('camera', {
     bindings: {
         camera: '@'
     },
-    controller: function ($interval, $http) {
+    controller: function ($interval, $http, $timeout) {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
@@ -24,11 +24,13 @@ app.component('camera', {
             if (!$ctrl.id) {
                 $http.get('api/camera').then(function (result) {
                     $ctrl.id = result.data.id;
-                    $ctrl.url = "http://localhost:8081/out.jpg?q=30&id=" + result.data.id + "&r=" + new Date().getTime().toString();
+                    $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
                 });
             }
             else {
-                $ctrl.url = "http://localhost:8081/out.jpg?q=30&id=" + $ctrl.id + "&r=" + new Date().getTime().toString();
+                $timeout(function() {
+                    $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
+                }, 40);
             }
         }
     }
