@@ -2,10 +2,10 @@ div.btn-group-left-right {
     margin: 5px 0px
 }
 
-    div.btn-group-left-right button {
-        float: left;
-        width: 50%;
-    }
+div.btn-group-left-right button {
+    float: left;
+    width: 50%;
+}
 
 div.dir-buttons button {
     height: 65px;
@@ -17,6 +17,8 @@ div.dir-buttons button {
     }
 }
 
-loader {
-
+@media (min-width: 768px) {
+    .container {
+        width: 100% !important;
+    }
 }

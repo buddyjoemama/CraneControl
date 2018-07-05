@@ -1,8 +1,8 @@
-
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
+var server = "http://192.168.86.240/CraneWeb/";
 
 app.factory('settings', function ($http) {
-    return $http.get('api/settings/all');
+    return $http.get(server + 'api/settings/all');
 });
 
 app.component('camera', {
@@ -56,12 +56,12 @@ app.controller('appController', function ($http, ComPort) {
     vm.activePort = ComPort;
     vm.magOn = false;
     vm.$onInit = function () {
-        $http.put("api/control/off");
+        $http.put(server + "api/control/off");
     }
 
     vm.activateMagnet = function () {
         vm.magOn = !vm.magOn
-        $http.get('api/control/mag/' + vm.magOn);
+        $http.get(server + 'api/control/mag/' + vm.magOn);
     }
 });
 
@@ -96,7 +96,7 @@ app.directive('button', function (settings, $http) {
     function loadButtonActions(attrs, scope, element, result) {
         element.on('mousedown', function () {
             var el = result.operations[scope.op];
-            $http.post('api/control', [{
+            $http.post(server + 'api/control', [{
                 Operation: el,
                 Action: 'On'
             }]).then(function (result) {
@@ -107,7 +107,7 @@ app.directive('button', function (settings, $http) {
         element.on('mouseout mouseup', function (x) {
             if (attrs['on'] == true) {
                 var el = result.operations[scope.op];
-                $http.post('api/control', [{
+                $http.post(server + 'api/control', [{
                     Operation: el,
                     Action: 'Off'
                 }]).then(function (result) {
