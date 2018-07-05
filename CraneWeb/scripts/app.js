@@ -1,5 +1,5 @@
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
-var server = "http://192.168.86.240/CraneWeb/";
+var server = "";//"http://192.168.86.240/CraneWeb/";
 
 app.factory('settings', function ($http) {
     return $http.get(server + 'api/settings/all');
@@ -14,15 +14,12 @@ app.component('camera', {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
-            //$interval(function () {
-            //    $ctrl.url = "api/camera?r=" + new Date().getTime();
-            //}, 200);
         }
 
         $ctrl.imageLoaded = function () {
             settings.then(function (result) {
                 if (!$ctrl.id) {
-                    $http.get('api/camera').then(function (result) {
+                    $http.get(server + 'api/camera').then(function (result) {
                         $ctrl.id = result.data.id;
                         $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
                     });
@@ -68,7 +65,7 @@ app.controller('appController', function ($http, ComPort) {
 app.directive('loader', function (settings) {
     return {
         restrict: 'E',
-        template: '<div ng-hide="hide == true"><h1><strong>Loading camera...</strong></h1></div>',
+        template: '<div ng-hide="hide"><h1><strong>Connecting to server...</strong></h1></div>',
         link: function (scope, element, attrs) {
             scope.hide = false;
             settings.then(function (result) {
