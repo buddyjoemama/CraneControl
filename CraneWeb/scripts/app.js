@@ -10,7 +10,7 @@ app.component('camera', {
     bindings: {
         camera: '@'
     },
-    controller: function ($interval, $http, $timeout) {
+    controller: function ($http, $timeout, settings) {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
@@ -20,18 +20,19 @@ app.component('camera', {
         }
 
         $ctrl.imageLoaded = function () {
-
-            if (!$ctrl.id) {
-                $http.get('api/camera').then(function (result) {
-                    $ctrl.id = result.data.id;
-                    $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
-                });
-            }
-            else {
-                $timeout(function() {
-                    $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
-                }, 40);
-            }
+            settings.then(function (result) {
+                if (!$ctrl.id) {
+                    $http.get('api/camera').then(function (result) {
+                        $ctrl.id = result.data.id;
+                        $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
+                    });
+                }
+                else {
+                    $timeout(function () {
+                        $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
+                    }, 40);
+                }
+            });
         }
     }
 });
