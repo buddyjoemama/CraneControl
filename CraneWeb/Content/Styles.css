@@ -22,3 +22,11 @@ div.dir-buttons button {
         width: 100% !important;
     }
 }
+
+.btn[on='true'] {
+    color: red !important;
+}
+
+svg {
+    pointer-events: none;
+}

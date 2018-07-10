@@ -1,6 +1,10 @@
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
 var server = "";//"http://192.168.86.240/CraneWeb/";
 
+app.run(function ($http) {
+    $http.put(server + "api/control/off");
+});
+
 app.factory('settings', function ($http) {
     return $http.get(server + 'api/settings/all');
 });
@@ -17,16 +21,16 @@ app.component('camera', {
         }
 
         $ctrl.imageLoaded = function () {
-            settings.then(function (result) {
+            settings.then(function (sResult) {
                 if (!$ctrl.id) {
                     $http.get(server + 'api/camera').then(function (result) {
                         $ctrl.id = result.data.id;
-                        $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
+                        $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
                     });
                 }
                 else {
                     $timeout(function () {
-                        $ctrl.url = "http://192.168.86.240:8888/out.jpg?r=" + new Date().getTime();
+                        $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
                     }, 40);
                 }
             });
@@ -41,8 +45,6 @@ app.directive('imageOnload', function () {
             element.bind('load', function () {
                 // call the function that was passed
                 scope.$apply(attrs.imageOnload);
-
-                // usage: <img ng-src="src" image-onload="imgLoadedCallback()" />
             });
         }
     };
@@ -52,8 +54,9 @@ app.controller('appController', function ($http, ComPort) {
     var vm = this;
     vm.activePort = ComPort;
     vm.magOn = false;
+
     vm.$onInit = function () {
-        $http.put(server + "api/control/off");
+        
     }
 
     vm.activateMagnet = function () {

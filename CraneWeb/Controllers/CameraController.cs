@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Drawing;
 using System.Linq;
 using System.Net;
@@ -31,7 +33,18 @@ namespace CraneWeb.Controllers
             var id = (new Random()).NextDouble();
             var rand = (new Random()).NextDouble();
 
-            var result = await client.GetAsync($"http://localhost:8081/get?id={id}&r={rand}");
+            var settings = 
+                JsonConvert.DeserializeAnonymousType(ConfigurationManager.AppSettings["ServerSettings"],
+                new[]
+                {
+                    new
+                    {
+                        PortName = "",
+                        Value = 0
+                    }
+                }).ToDictionary(k => k.PortName, v => v.Value);
+
+            var result = await client.GetAsync($"http://localhost:{settings["CameraServerInitPort"]}/get?id={id}&r={rand}");
 
             return Json(new
             {

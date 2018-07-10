@@ -1,4 +1,5 @@
 ﻿using Common.Configuration;
+using Newtonsoft.Json;
 using Open.Nat;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace UPnPAgent
 
         protected override async void OnStart(string[] args)
         {
-            await Run(); 
+            await Run();
         }
 
         protected override void OnStop()
@@ -37,7 +38,7 @@ namespace UPnPAgent
 
             IPAddress externalIp = IPAddress.None;
             var discoverer = new NatDiscoverer();
-            var device = await discoverer.DiscoverDeviceAsync();            
+            var device = await discoverer.DiscoverDeviceAsync();
 
             while (true)
             {
@@ -47,22 +48,30 @@ namespace UPnPAgent
                 {
                     externalIp = ip;
 
-                    //StorageHelper.StoreSetting(StorageHelper.StorageKeys.IPAddress, ip.ToString());
-                    //StorageHelper.StoreSetting(StorageHelper.StorageKeys.WebServerPort, ConfigurationManager.AppSettings["WebServerPort"]);
-                    //StorageHelper.StoreSetting(StorageHelper.StorageKeys.PrivateIP, GetLocalIPAddress());
+                   // StorageHelper.StoreSetting(StorageHelper.StorageKeys.RouterPublicIPAddress, ip.ToString());
+                   // StorageHelper.StoreSetting(StorageHelper.StorageKeys.ServerPrivateIPAddress, GetLocalIPAddress());
 
-                    foreach (var port in ConfigurationManager.AppSettings["ServerPorts"].Split(new char[] { ',' })
-                        .Select(s=>int.Parse(s)))
+                    var ports = JsonConvert.DeserializeAnonymousType(ConfigurationManager.AppSettings["ServerSettings"],
+                        new[]
+                        {
+                            new
+                            {
+                                PortName = "",
+                                Value = 0
+                            }
+                        });
+
+                    foreach (var port in ports)
                     {
                         try
                         {
-                            await device.DeletePortMapAsync(new Mapping(Protocol.Tcp, port, port));
+                            await device.DeletePortMapAsync(new Mapping(Protocol.Tcp, port.Value, port.Value));
                         }
                         catch { }
 
                         try
                         {
-                            var mapping = new Mapping(Protocol.Tcp, port, port, "port_mapping");
+                            var mapping = new Mapping(Protocol.Tcp, port.Value, port.Value, "port_mapping");
                             await device.CreatePortMapAsync(mapping);
                         }
                         catch { }
@@ -71,19 +80,6 @@ namespace UPnPAgent
 
                 await Task.Delay(TimeSpan.FromMinutes(delay));
             }
-        }
-
-        public static string GetLocalIPAddress()
-        {
-            var host = Dns.GetHostEntry(Dns.GetHostName());
-            foreach (var ip in host.AddressList)
-            {
-                if (ip.AddressFamily == AddressFamily.InterNetwork)
-                {
-                    return ip.ToString();
-                }
-            }
-            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
