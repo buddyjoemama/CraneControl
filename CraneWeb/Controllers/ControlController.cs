@@ -15,12 +15,8 @@ namespace CraneWeb.Controllers
         [HttpPost]
         public IHttpActionResult Operate(List<ControlboardOperation> ops)
         {
-            var timer = Stopwatch.StartNew();
-
             Driver.OperateCrane(ops);
-            timer.Stop();
-
-            return Json(timer.ElapsedMilliseconds);
+            return Ok();
         }
 
         [HttpPut, Route("api/control/off")]

@@ -94,24 +94,44 @@ app.directive('button', function (settings, $http) {
     };
 
     function loadButtonActions(attrs, scope, element, result) {
-        element.on('mousedown', function () {
+        scope.waiting = false;
+
+        scope.on = function () {
             var el = result.operations[scope.op];
+            scope.waiting = true;
             $http.post(server + 'api/control', [{
                 Operation: el,
                 Action: 'On'
             }]).then(function (result) {
                 attrs.$set('on', true);
+                scope.waiting = false;
             });
+        };
+
+        scope.off = function () {
+            var el = result.operations[scope.op];
+            $http.post(server + 'api/control', [{
+                Operation: el,
+                Action: 'Off'
+            }]).then(function (result) {
+                attrs.$set('on', false);
+            });
+        }
+
+        element.on('mousedown', function () {
+            if (scope.waiting)
+                return;
+            else {
+                scope.on();
+            }
         });
 
         element.on('mouseout mouseup', function (x) {
-            if (attrs['on'] == true) {
-                var el = result.operations[scope.op];
-                $http.post(server + 'api/control', [{
-                    Operation: el,
-                    Action: 'Off'
-                }]).then(function (result) {
-                    attrs.$set('on', false);
+            if (attrs['on'] == true && !scope.waiting) {
+                scope.off();
+            } else if (scope.waiting) {
+                scope.$watch(scope.waiting, function () {
+                    scope.off();
                 });
             }
         });

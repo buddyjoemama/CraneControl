@@ -92,7 +92,7 @@
     <Content Include="assets\sample.jpg" />
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
-    <Content Include="Home.html" />
+    <Content Include="Index.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-touch.js" />
     <Content Include="scripts\angular-touch.min.js" />
@@ -165,7 +165,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53831</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/CraneWeb</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
