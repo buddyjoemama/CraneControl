@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="6656">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Common.dll" size="8704">
       <assemblyIdentity name="Common" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>AyxcDCb1yoN6hHN3Nsm0shhLebe498uY0kSd+Ajt19o=</dsig:DigestValue>
+        <dsig:DigestValue>oHWZXGIvnexy7WCoe5m4XHejhab1EsfYZ/gOaAeCFSw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -582,24 +582,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPnPAgent.exe" size="11736">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UPnPAgent.exe" size="12248">
       <assemblyIdentity name="UPnPAgent" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>quFkdfGtJvY94RLcQc88RW8cEBsB4G9NdaEPQ0sMoz4=</dsig:DigestValue>
+        <dsig:DigestValue>fWxNr0qb8RadonxIC7uZaVNl64A2kr6bA/Gf+GskF7g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="UPnPAgent.exe.config" size="1710">
+  <file name="UPnPAgent.exe.config" size="1842">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>v5GLbTg3ArVAH//V7erBClfhNcPqzkLKpuc6uT04dOU=</dsig:DigestValue>
+      <dsig:DigestValue>L0dcH3vl9yKZ9gq20SgsuDuVj+rRauvtvgeVNTYfMa8=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

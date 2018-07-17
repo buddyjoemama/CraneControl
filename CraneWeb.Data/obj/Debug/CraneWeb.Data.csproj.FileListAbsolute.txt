@@ -24,4 +24,3 @@ C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.csproj.CoreCompileI
 C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.csproj.CopyComplete
 C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.dll
 C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.pdb
-C:\Source\CraneProject\CraneWeb.Data\obj\Debug\CraneWeb.Data.csprojResolveAssemblyReference.cache

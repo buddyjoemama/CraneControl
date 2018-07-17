@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Open.Nat;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -21,6 +22,17 @@ namespace Common
                 }
             }
             throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
+
+        public static async Task<String> GetExternalIPAddress()
+        {
+            IPAddress externalIp = IPAddress.None;
+            var discoverer = new NatDiscoverer();
+            var device = await discoverer.DiscoverDeviceAsync();
+
+            var res = await device.GetExternalIPAsync();
+
+            return res.ToString();
         }
     }
 }

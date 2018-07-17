@@ -247,8 +247,10 @@ C:\Source\CraneProject\CraneWeb\bin\ko\System.Spatial.resources.dll
 C:\Source\CraneProject\CraneWeb\bin\ru\System.Spatial.resources.dll
 C:\Source\CraneProject\CraneWeb\bin\zh-Hans\System.Spatial.resources.dll
 C:\Source\CraneProject\CraneWeb\bin\zh-Hant\System.Spatial.resources.dll
-C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.csprojResolveAssemblyReference.cache
 C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.csproj.CoreCompileInputs.cache
 C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.csproj.CopyComplete
 C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.dll
 C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.pdb
+C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.csprojAssemblyReference.cache
+C:\Source\CraneProject\CraneWeb\bin\Open.Nat.dll
+C:\Source\CraneProject\CraneWeb\bin\Open.Nat.xml

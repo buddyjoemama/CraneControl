@@ -128,7 +128,6 @@ C:\Source\CraneProject\UPnPAgent\bin\Debug\ko\System.Spatial.resources.dll
 C:\Source\CraneProject\UPnPAgent\bin\Debug\ru\System.Spatial.resources.dll
 C:\Source\CraneProject\UPnPAgent\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Source\CraneProject\UPnPAgent\bin\Debug\zh-Hant\System.Spatial.resources.dll
-C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.csprojResolveAssemblyReference.cache
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.Agent.resources
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.ProjectInstaller.resources
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.csproj.GenerateResource.cache
@@ -138,3 +137,4 @@ C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.application
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.csproj.CopyComplete
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.exe
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.pdb
+C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.csprojAssemblyReference.cache

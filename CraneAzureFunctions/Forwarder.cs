@@ -12,19 +12,19 @@ namespace CraneAzureFunctions
 {
     public static class Forwarder
     {
-        // http://http://cranedirector.azurewebsites.net/api/forwarder
-        [FunctionName("Forwarder")]
-        public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequestMessage req, TraceWriter log)
-        {
-            log.Info("C# HTTP trigger function processed a request.");
+        //// http://http://cranedirector.azurewebsites.net/api/forwarder
+        //[FunctionName("Forwarder")]
+        //public static async Task<HttpResponseMessage> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = null)]HttpRequestMessage req, TraceWriter log)
+        //{
+        //    log.Info("C# HTTP trigger function processed a request.");
 
-            String ipaddress = StorageHelper.GetSetting(StorageHelper.StorageKeys.IPAddress)?.Value;
-            String port = StorageHelper.GetSetting(StorageHelper.StorageKeys.PublicPort)?.Value;
+        //    String ipaddress = StorageHelper.GetSetting(StorageHelper.StorageKeys.IPAddress)?.Value;
+        //    String port = StorageHelper.GetSetting(StorageHelper.StorageKeys.PublicPort)?.Value;
 
-            var response = req.CreateResponse(HttpStatusCode.Redirect);
-            response.Headers.Location = new Uri($"http://{ipaddress}:{port}");
+        //    var response = req.CreateResponse(HttpStatusCode.Redirect);
+        //    response.Headers.Location = new Uri($"http://{ipaddress}:{port}");
 
-            return response;
-        }
+        //    return response;
+        //}
     } 
 }

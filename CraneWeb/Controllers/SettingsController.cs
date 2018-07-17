@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace CraneWeb.Controllers
@@ -20,7 +21,7 @@ namespace CraneWeb.Controllers
         }
 
         [HttpGet, Route("api/settings/all")]
-        public IHttpActionResult GetSettings()
+        public async Task<IHttpActionResult> GetSettings()
         {
             using (CraneDbContext context = new CraneDbContext())
             {
@@ -39,12 +40,14 @@ namespace CraneWeb.Controllers
                         }
                     }).ToDictionary(k => k.PortName, v => v.Value);
 
+                var ip = await Common.NetworkHelper.GetExternalIPAddress();
+
                 return Json(new
                 {
                     comPort = Driver._com,
                     operations = operations,
                     refreshPort = settings["CameraServerRefreshPort"],
-                    ipAddress = Common.NetworkHelper.GetLocalIPAddress()
+                    ipAddress = ip
                 });
             }
         }

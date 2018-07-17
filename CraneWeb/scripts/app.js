@@ -1,12 +1,11 @@
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
-var server = "";//"http://192.168.86.240/CraneWeb/";
 
 app.run(function ($http) {
-    $http.put(server + "api/control/off");
+    $http.put('api/control/off');
 });
 
 app.factory('settings', function ($http) {
-    return $http.get(server + 'api/settings/all');
+    return $http.get('api/settings/all');
 });
 
 app.component('camera', {
@@ -23,7 +22,7 @@ app.component('camera', {
         $ctrl.imageLoaded = function () {
             settings.then(function (sResult) {
                 if (!$ctrl.id) {
-                    $http.get(server + 'api/camera').then(function (result) {
+                    $http.get('api/camera').then(function (result) {
                         $ctrl.id = result.data.id;
                         $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
                     });
@@ -61,7 +60,7 @@ app.controller('appController', function ($http, ComPort) {
 
     vm.activateMagnet = function () {
         vm.magOn = !vm.magOn
-        $http.get(server + 'api/control/mag/' + vm.magOn);
+        $http.get('api/control/mag/' + vm.magOn);
     }
 });
 
@@ -99,7 +98,7 @@ app.directive('button', function (settings, $http) {
         scope.on = function () {
             var el = result.operations[scope.op];
             scope.waiting = true;
-            $http.post(server + 'api/control', [{
+            $http.post('api/control', [{
                 Operation: el,
                 Action: 'On'
             }]).then(function (result) {
@@ -110,7 +109,7 @@ app.directive('button', function (settings, $http) {
 
         scope.off = function () {
             var el = result.operations[scope.op];
-            $http.post(server + 'api/control', [{
+            $http.post('api/control', [{
                 Operation: el,
                 Action: 'Off'
             }]).then(function (result) {

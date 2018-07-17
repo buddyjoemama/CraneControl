@@ -15,11 +15,8 @@ namespace Common.Configuration
 
         public static class StorageKeys
         {
-            public static String IPAddress = "IPAddress";
-            public static String PublicPort = "PublicPort";
-            public static String PrivatePort = "PrivatePort";
-            public static String PrivateIP = "PrivateIP";
-            public static String WebServerPort = "WebServerPort";
+            public static String ServerPrivateIPAddress = "PrivateIP";
+            public static String RouterPublicIPAddress = "RouterPublicIPAddress";
         }
 
         static StorageHelper()

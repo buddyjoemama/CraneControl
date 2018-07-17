@@ -54,6 +54,7 @@ namespace SerialLib
         public static string _com;
         public static object locker = new object();
         public static CraneOperation magOperation;
+        static DateTime? lastStartTime = null;
 
         static Driver()
         {
@@ -61,10 +62,26 @@ namespace SerialLib
             s_chipActions.Add(ActionSource.SouthChip, 0);
             _com = FindControllerComPort();
             magOperation = CraneOperation.GetByOpCode(CraneOperations.Magnet);
+
+            Task.Run(() =>
+            {
+                while (true)
+                {
+                    if(lastStartTime != null && DateTime.UtcNow.Subtract(lastStartTime.Value).Minutes >= 2)
+                    {
+                        Driver.Off();
+                        lastStartTime = null;
+                    }
+
+                    Thread.Sleep(1000);
+                }
+            });
         }
 
         public static void OperateCrane(List<ControlboardOperation> operations)
         {
+            lastStartTime = DateTime.UtcNow;
+            
             foreach(var op in operations)
             {
                 if (op.Action == CraneOperationAction.Off)

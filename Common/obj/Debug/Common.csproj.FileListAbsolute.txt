@@ -113,4 +113,5 @@ C:\Source\CraneProject\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Source\CraneProject\Common\obj\Debug\Common.csproj.CopyComplete
 C:\Source\CraneProject\Common\obj\Debug\Common.dll
 C:\Source\CraneProject\Common\obj\Debug\Common.pdb
-C:\Source\CraneProject\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Source\CraneProject\Common\bin\Debug\Open.Nat.dll
+C:\Source\CraneProject\Common\bin\Debug\Open.Nat.xml

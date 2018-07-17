@@ -57,8 +57,10 @@ C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestF
 C:\Source\CraneProject\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Source\CraneProject\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
 C:\Source\CraneProject\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.xml
-C:\Source\CraneProject\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
 C:\Source\CraneProject\Tests\obj\Debug\Tests.csproj.CoreCompileInputs.cache
 C:\Source\CraneProject\Tests\obj\Debug\Tests.csproj.CopyComplete
 C:\Source\CraneProject\Tests\obj\Debug\Tests.dll
 C:\Source\CraneProject\Tests\obj\Debug\Tests.pdb
+C:\Source\CraneProject\Tests\obj\Debug\Tests.csprojAssemblyReference.cache
+C:\Source\CraneProject\Tests\bin\Debug\Open.Nat.dll
+C:\Source\CraneProject\Tests\bin\Debug\Open.Nat.xml

@@ -34,8 +34,8 @@ C:\Source\CraneProject\SerialLib\bin\Debug\CraneWeb.Data.dll.config
 C:\Source\CraneProject\SerialLib\bin\Debug\EntityFramework.xml
 C:\Source\CraneProject\SerialLib\bin\Debug\EntityFramework.SqlServer.xml
 C:\Source\CraneProject\SerialLib\bin\Debug\Open.Nat.xml
-C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csprojResolveAssemblyReference.cache
 C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csproj.CoreCompileInputs.cache
 C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csproj.CopyComplete
 C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.dll
 C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.pdb
+C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csprojAssemblyReference.cache
