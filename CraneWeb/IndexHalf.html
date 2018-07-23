@@ -1,0 +1,63 @@
+<html ng-app="craneWeb">
+
+<head>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <link rel="stylesheet" href="content/Styles.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2 text-center">
+                <h3>Platform</h3>
+                <button class="btn btn-lg btn-block" op="PlatformNorth">
+                    <i class="fas fa-angle-up fa-3x"></i>
+                </button>
+                <div class="btn-group-left-right btn-group" style="overflow: hidden">
+                    <button class="btn btn-lg" style="float:left; width: 50%;" op="PlatformWest">
+                        <i class="fas fa-angle-left fa-3x"></i>
+                    </button>
+                    <button class="btn btn-lg" style="float: left; width: 50%" op="PlatformEast">
+                        <i class="fas fa-angle-right fa-3x"></i>
+                    </button>
+                </div>
+                <button class="btn btn-lg btn-block" op="PlatformSouth">
+                    <i class="fas fa-angle-down fa-3x"></i>
+                </button>
+                <h3>Rotation</h3>
+                <div class="btn-group-left-right btn-group" style="overflow: hidden">
+                    <button class="btn btn-lg" op="CabCW"><i class="fas fa-redo fa-2x"></i></button>
+                    <button class="btn btn-lg" op="CabCCW"><i class="fas fa-undo fa-2x"></i></button>
+                </div>
+            </div>
+            <div class="col-sm-8 text-center">
+                <loader></loader>
+                <camera></camera>
+            </div>
+            <div class="col-sm-2 text-center">
+                <h3>Boom</h3>
+                <button class="btn btn-lg btn-block" op="BoomUp">
+                    <i class="fas fa-angle-up fa-3x"></i>
+                </button>
+                <button class="btn btn-lg btn-block" op="BoomDown">
+                    <i class="fas fa-angle-down fa-3x"></i>
+                </button>
+                <h3>Hook</h3>
+                <button class="btn btn-lg btn-block" op="HookUp">
+                    <i class="fas fa-angle-up fa-3x"></i>
+                </button>
+                <button class="btn btn-lg btn-block" op="HookDown">
+                    <i class="fas fa-angle-down fa-3x"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="scripts/angular-touch.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
+</html>
