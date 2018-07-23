@@ -93,6 +93,7 @@
     <Content Include="Content\ui-bootstrap-csp.css" />
     <Content Include="Global.asax" />
     <Content Include="Index.html" />
+    <Content Include="IndexHalf.html" />
     <Content Include="scripts\angular-mocks.js" />
     <Content Include="scripts\angular-touch.js" />
     <Content Include="scripts\angular-touch.min.js" />
