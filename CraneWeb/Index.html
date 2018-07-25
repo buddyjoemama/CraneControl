@@ -35,36 +35,61 @@
             button.op-button:hover {
                 background-color: rgb(255, 255, 255, .75);
             }
+
+            loader {
+                position: absolute;
+                left: 200px;
+                top: 0px;
+                display: inline;
+            }
         </style>
         <div>
             <div id="left">
                 <div>Platform</div>
                 <button class="btn btn-lg op-button" op="PlatformNorth">
-                    <i class="fas fa-angle-up fa-3x"></i>
+                    <i class="fas fa-angle-up fa-2x"></i>
                 </button>
                 <div>
-                    <button class="btn btn-lg op-button" op="PlatformNorth">
-                        <i class="fas fa-angle-left fa-3x"></i>
+                    <button class="btn btn-lg op-button" op="PlatformWest">
+                        <i class="fas fa-angle-left fa-2x"></i>
                     </button>
-                    <button class="btn btn-lg op-button" op="PlatformNorth">
-                        <i class="fas fa-angle-right fa-3x"></i>
+                    <button class="btn btn-lg op-button" op="PlatformEast">
+                        <i class="fas fa-angle-right fa-2x"></i>
                     </button>
                 </div>
-                <button class="btn btn-lg op-button" op="PlatformNorth">
-                    <i class="fas fa-angle-down fa-3x"></i>
+                <button class="btn btn-lg op-button" op="PlatformSouth">
+                    <i class="fas fa-angle-down fa-2x"></i>
                 </button>
                 <div>
                     <div>Cab Rotation</div>
-                    <button class="btn btn-lg op-button">
+                    <button class="btn btn-lg op-button" op="CabCW">
                         <i class="fas fa-redo fa-2x"></i>
                     </button>
-                    <button class="btn btn-lg op-button">
+                    <button class="btn btn-lg op-button" op="CabCCW">
                         <i class="fas fa-undo fa-2x"></i>
                     </button>
                 </div>
+                <div id="boom">
+                    <div>Boom</div>
+                    <button class="btn btn-lg op-button" op="BoomUp">
+                        <i class="fas fa-angle-up fa-2x"></i>
+                    </button>
+                    <button class="btn btn-lg op-button" op="BoomDown">
+                        <i class="fas fa-angle-down fa-2x"></i>
+                    </button>
+                </div>
+                <div id="hook">
+                    <div>Hook</div>
+                    <button class="btn btn-lg op-button" op="HookUp">
+                        <i class="fas fa-angle-up fa-2x"></i>
+                    </button>
+                    <button class="btn btn-lg op-button" op="HookDown">
+                        <i class="fas fa-angle-down fa-2x"></i>
+                    </button>
+                </div>
             </div>
-            <!--loader></loader>
-            <camera></camera-->
+            <loader></loader>
+            <camera></camera>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>

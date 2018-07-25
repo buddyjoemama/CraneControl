@@ -1,25 +1,15 @@
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
-var mode = "dev";
 
 app.run(function ($http) {
     $http.put('api/control/off');
 });
 
 app.factory('settings', function ($http, $q) {
-    if(mode === "dev")
-        return $q.resolve({
-            data: {
-                ipAddress: '66.66.139.128',
-                refreshPort: 8888,
-                comPort: 'COM3'
-            }
-        });
-
     return $http.get('api/settings/all');
 });
 
 app.component('camera', {
-    template: '<img ng-src="{{$ctrl.url}}" src="assets/ajax-loader.gif" image-onload="$ctrl.imageLoaded()"/>',
+    template: '<img ng-src="{{$ctrl.url}}" image-onload="$ctrl.imageLoaded()"/>',
     bindings: {
         camera: '@'
     },
