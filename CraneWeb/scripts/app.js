@@ -17,6 +17,7 @@ app.component('camera', {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
+            $ctrl.imageLoaded();
         }
 
         $ctrl.imageLoaded = function () {
@@ -85,6 +86,7 @@ app.directive('button', function (settings, $http) {
         },
         link: function (scope, element, attrs) {
             attrs.$set('disabled', true);
+            attrs.$set('on', false);
             settings.then(function (result) {
                 attrs.$set('disabled', false);
                 loadButtonActions(attrs, scope, element, result.data);
@@ -120,7 +122,7 @@ app.directive('button', function (settings, $http) {
         element.on('mousedown', function () {
             if (scope.waiting)
                 return;
-            else {
+            else if(attrs['on'] == false) {
                 scope.on();
             }
         });
@@ -128,9 +130,10 @@ app.directive('button', function (settings, $http) {
         element.on('mouseout mouseup', function (x) {
             if (attrs['on'] == true && !scope.waiting) {
                 scope.off();
-            } else if (scope.waiting) {
+            } else if (scope.waiting) {                
                 scope.$watch(scope.waiting, function () {
-                    scope.off();
+                    if(attrs['on'] == true && !scope.waiting)
+                        scope.off();
                 });
             }
         });
