@@ -27,8 +27,7 @@ app.component('camera', {
                         $ctrl.id = result.data.id;
                         $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
                     });
-                }
-                else {
+                } else {
                     $timeout(function () {
                         $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
                     }, 40);
@@ -56,7 +55,7 @@ app.controller('appController', function ($http, ComPort) {
     vm.magOn = false;
 
     vm.$onInit = function () {
-        
+
     }
 
     vm.activateMagnet = function () {
@@ -83,6 +82,7 @@ app.directive('button', function (settings, $http) {
         restrict: 'E',
         scope: {
             op: '@',
+            clickMode: '@'
         },
         link: function (scope, element, attrs) {
             attrs.$set('disabled', true);
@@ -93,6 +93,25 @@ app.directive('button', function (settings, $http) {
             });
         }
     };
+
+    function buttonDown(scope, attrs) {
+        if (scope.waiting)
+            return;
+        else if (attrs['on'] == false) {
+            scope.on();
+        }
+    }
+
+    function buttonUp(scope, attrs) {
+        if (attrs['on'] == true && !scope.waiting) {
+            scope.off();
+        } else if (scope.waiting) {
+            scope.$watch(scope.waiting, function () {
+                if (attrs['on'] == true && !scope.waiting)
+                    scope.off();
+            });
+        }
+    }
 
     function loadButtonActions(attrs, scope, element, result) {
         scope.waiting = false;
@@ -119,23 +138,27 @@ app.directive('button', function (settings, $http) {
             });
         }
 
-        element.on('mousedown', function () {
-            if (scope.waiting)
-                return;
-            else if(attrs['on'] == false) {
-                scope.on();
-            }
-        });
+        if (scope.clickMode === "touch") {
+            element.on("touchstart", function () {
+                buttonDown(scope, attrs);
+            });
 
-        element.on('mouseout mouseup', function (x) {
-            if (attrs['on'] == true && !scope.waiting) {
-                scope.off();
-            } else if (scope.waiting) {                
-                scope.$watch(scope.waiting, function () {
-                    if(attrs['on'] == true && !scope.waiting)
-                        scope.off();
-                });
-            }
+            element.on('touchend', function () {
+                buttonUp(scope, attrs);
+            });
+        }
+        else {
+            element.on('mousedown', function () {
+                buttonDown(scope, attrs);
+            });
+
+            element.on('mouseout mouseup', function () {
+                buttonUp(scope, attrs);
+            });
+        }
+
+        element.on('mousedown', function () {
+            buttonDown(scope, attrs);
         });
     }
 });

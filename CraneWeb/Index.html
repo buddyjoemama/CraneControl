@@ -5,102 +5,108 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="Content/Styles.css" />
 </head>
-    <body>
-        <style>
-            body {
-                background-color: lightgray;
-            }
-            img {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                left: 0px;
-                top: 0px;
-            }
-            div#left {
-                background-color: transparent;
-                color: white;
-                position: relative;
-                left: 0px;
-                height: 100%;
-                z-index: 100;
-                width: 20%;
-                text-align: center;
-            }
 
-            .op-button,op-button:active {
-                background-color: rgba(255, 255, 255, .25);
-                color: #333;
-            }
+<body>
+    <style>
+        body {
+            background-color: lightgray;
+        }
 
-            button.op-button:hover {
-                background-color: rgba(255, 255, 255, .75);
-            }
+        img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+        }
 
-            loader {
-                position: absolute;
-                left: 200px;
-                top: 0px;
-                display: inline;
-            }
-        </style>
-        <div>
-            <div id="left">
-                <div>Platform</div>
-                <button class="btn btn-lg op-button" op="PlatformNorth">
+        div#left {
+            background-color: transparent;
+            color: white;
+            position: relative;
+            left: 0px;
+            height: 100%;
+            z-index: 100;
+            width: 20%;
+            text-align: center;
+        }
+
+        .op-button,
+        op-button:active {
+            background-color: rgba(255, 255, 255, .25);
+            color: #333;
+        }
+
+        button.op-button:hover {
+            background-color: rgba(255, 255, 255, .75);
+        }
+
+        loader {
+            position: absolute;
+            left: 200px;
+            top: 0px;
+            display: inline;
+        }
+
+    </style>
+    <div>
+        <div id="left">
+            <div>Platform</div>
+            <button class="btn btn-lg op-button" op="PlatformNorth">
                     <i class="fas fa-angle-up fa-2x"></i>
                 </button>
-                <div>
-                    <button class="btn btn-lg op-button" op="PlatformWest">
+            <div>
+                <button class="btn btn-lg op-button" op="PlatformWest">
                         <i class="fas fa-angle-left fa-2x"></i>
                     </button>
-                    <button class="btn btn-lg op-button" op="PlatformEast">
+                <button class="btn btn-lg op-button" op="PlatformEast">
                         <i class="fas fa-angle-right fa-2x"></i>
                     </button>
-                </div>
-                <button class="btn btn-lg op-button" op="PlatformSouth">
+            </div>
+            <button class="btn btn-lg op-button" op="PlatformSouth">
                     <i class="fas fa-angle-down fa-2x"></i>
                 </button>
-                <div>
-                    <div>Cab Rotation</div>
-                    <button class="btn btn-lg op-button" op="CabCW">
+            <div>
+                <div>Cab Rotation</div>
+                <button class="btn btn-lg op-button" op="CabCW">
                         <i class="fas fa-redo fa-2x"></i>
                     </button>
-                    <button class="btn btn-lg op-button" op="CabCCW">
+                <button class="btn btn-lg op-button" op="CabCCW">
                         <i class="fas fa-undo fa-2x"></i>
                     </button>
-                </div>
-                <div id="boom">
-                    <div>Boom</div>
-                    <button class="btn btn-lg op-button" op="BoomUp">
+            </div>
+            <div id="boom">
+                <div>Boom</div>
+                <button class="btn btn-lg op-button" op="BoomUp" click-mode="touch">
                         <i class="fas fa-angle-up fa-2x"></i>
                     </button>
-                    <button class="btn btn-lg op-button" op="BoomDown">
+                <button class="btn btn-lg op-button" op="BoomDown" click-mode="touch">
                         <i class="fas fa-angle-down fa-2x"></i>
                     </button>
-                </div>
-                <div id="hook">
-                    <div>Hook</div>
-                    <button class="btn btn-lg op-button" op="HookUp">
+            </div>
+            <div id="hook">
+                <div>Hook</div>
+                <button class="btn btn-lg op-button" op="HookUp" click-mode="touch">
                         <i class="fas fa-angle-up fa-2x"></i>
                     </button>
-                    <button class="btn btn-lg op-button" op="HookDown">
+                <button class="btn btn-lg op-button" op="HookDown" click-mode="touch">
                         <i class="fas fa-angle-down fa-2x"></i>
                     </button>
-                </div>
-                <div id="magnet">
-                    <div>Magnet</div>
-                    <button class="btn btn-block op-button" op="Magnet">
+            </div>
+            <div id="magnet">
+                <div>Magnet</div>
+                <button class="btn btn-block op-button" op="Magnet">
                         <i class="fas fa-bolt fa-2x"></i>
                     </button>
-                </div>
             </div>
-            <loader></loader>
-            <camera></camera>
         </div>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
-        <script src="scripts/angular-touch.min.js"></script>
-        <script src="scripts/app.js"></script>
-    </body>
+        <loader></loader>
+        <camera></camera>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+    <script src="scripts/angular-touch.min.js"></script>
+    <script src="scripts/app.js"></script>
+</body>
+
 </html>
