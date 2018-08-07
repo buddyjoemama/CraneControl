@@ -138,27 +138,21 @@ app.directive('button', function (settings, $http) {
             });
         }
 
-        if (scope.clickMode === "touch") {
-            element.on("touchstart", function () {
-                buttonDown(scope, attrs);
-            });
+        var event = navigator.platform === "Win32" ?
+            {
+                events: ['mousedown', 'mouseout mouseup'],
+            }
+                :
+            {
+                events: ['touchstart', 'touchend'],
+            }
 
-            element.on('touchend', function () {
-                buttonUp(scope, attrs);
-            });
-        }
-        else {
-            element.on('mousedown', function () {
-                buttonDown(scope, attrs);
-            });
-
-            element.on('mouseout mouseup', function () {
-                buttonUp(scope, attrs);
-            });
-        }
-
-        element.on('mousedown', function () {
+        element.on(event.events[0], function () {
             buttonDown(scope, attrs);
+        });
+
+        element.on(event.events[1], function () {
+            buttonUp(scope, attrs);
         });
     }
 });
