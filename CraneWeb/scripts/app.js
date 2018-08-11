@@ -5,7 +5,7 @@ app.run(function ($http) {
 });
 
 app.factory('settings', function ($http, $q) {
-    return $http.get('api/settings/all');
+    return $q.resolve({});//$http.get('api/settings/all');
 });
 
 app.component('camera', {
@@ -138,21 +138,34 @@ app.directive('button', function (settings, $http) {
             });
         }
 
-        var event = navigator.platform === "Win32" ?
-            {
-                events: ['mousedown', 'mouseout mouseup'],
-            }
+        if (scope.op !== "Magnet") {
+            var event = navigator.platform === "Win32" ?
+                {
+                    events: ['mousedown', 'mouseout mouseup'],
+                }
                 :
-            {
-                events: ['touchstart', 'touchend'],
-            }
+                {
+                    events: ['touchstart', 'touchend'],
+                }
 
-        element.on(event.events[0], function () {
-            buttonDown(scope, attrs);
-        });
+            element.on(event.events[0], function () {
+                buttonDown(scope, attrs);
+            });
 
-        element.on(event.events[1], function () {
-            buttonUp(scope, attrs);
-        });
+            element.on(event.events[1], function () {
+                buttonUp(scope, attrs);
+            });
+        } else {
+            element.on('click', function () {
+                //attrs.$set('on', !attrs.on);
+
+                if (attrs.on) {
+                    scope.on();
+                }
+                else {
+                    scope.off();
+                }
+            });
+        }
     }
 });
