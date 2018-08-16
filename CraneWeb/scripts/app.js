@@ -5,7 +5,7 @@ app.run(function ($http) {
 });
 
 app.factory('settings', function ($http, $q) {
-    return $q.resolve({});//$http.get('api/settings/all');
+    return $http.get('api/settings/all');
 });
 
 app.component('camera', {
@@ -119,10 +119,10 @@ app.directive('button', function (settings, $http) {
         scope.on = function () {
             var el = result.operations[scope.op];
             scope.waiting = true;
-            $http.post('api/control', [{
+            $http.post('api/control', {
                 Operation: el,
                 Action: 'On'
-            }]).then(function (result) {
+            }).then(function (result) {
                 attrs.$set('on', true);
                 scope.waiting = false;
             });
@@ -130,10 +130,10 @@ app.directive('button', function (settings, $http) {
 
         scope.off = function () {
             var el = result.operations[scope.op];
-            $http.post('api/control', [{
+            $http.post('api/control', {
                 Operation: el,
                 Action: 'Off'
-            }]).then(function (result) {
+            }).then(function (result) {
                 attrs.$set('on', false);
             });
         }
@@ -159,7 +159,7 @@ app.directive('button', function (settings, $http) {
             element.on('click', function () {
                 //attrs.$set('on', !attrs.on);
 
-                if (attrs.on) {
+                if (!attrs.on) {
                     scope.on();
                 }
                 else {

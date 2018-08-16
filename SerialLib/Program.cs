@@ -78,6 +78,11 @@ namespace SerialLib
             });
         }
 
+        public static void OperateCrane(ControlboardOperation op)
+        {
+            OperateCrane(new List<ControlboardOperation> { op });
+        }
+
         public static void OperateCrane(List<ControlboardOperation> operations)
         {
             lastStartTime = DateTime.UtcNow;
@@ -96,11 +101,6 @@ namespace SerialLib
             }
 
             WriteAll();
-        }
-
-        public static void OperateCrane(ControlboardOperation op)
-        {
-            OperateCrane(new List<ControlboardOperation> { op });
         }
 
         public static void Off()

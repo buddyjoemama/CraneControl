@@ -13,9 +13,9 @@ namespace CraneWeb.Controllers
     public class ControlController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Operate(List<ControlboardOperation> ops)
+        public IHttpActionResult Operate(ControlboardOperation op)
         {
-            Driver.OperateCrane(ops);
+            Driver.OperateCrane(op);
             return Ok();
         }
 
