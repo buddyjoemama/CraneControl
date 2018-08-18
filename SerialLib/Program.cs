@@ -91,7 +91,11 @@ namespace SerialLib
             {
                 if (op.Action == CraneOperationAction.Off)
                 {
-                    s_chipActions[op.Operation.ActionSource] = 0;
+                    if (op.Operation.OpCode != CraneOperations.Magnet)
+                        s_chipActions[op.Operation.ActionSource] = (byte)(s_chipActions[op.Operation.ActionSource] & 64);
+                    else
+                        s_chipActions[op.Operation.ActionSource] = 0;
+
                     continue;
                 }
                 else
@@ -105,6 +109,7 @@ namespace SerialLib
 
         public static void Off()
         {
+            
             s_chipActions[ActionSource.SouthChip] = 0;
             s_chipActions[ActionSource.NorthChip] = 0;
             WriteAll();
@@ -197,16 +202,6 @@ namespace SerialLib
             }
 
             return null;
-        }
-
-        public static void ActivateMagnet(bool on)
-        {
-            if (on)
-                s_chipActions[ActionSource.NorthChip] |= (byte)(1 << (int)6);
-            else
-                s_chipActions[ActionSource.NorthChip] &= 15;
-
-            WriteAll();
         }
     }
 }

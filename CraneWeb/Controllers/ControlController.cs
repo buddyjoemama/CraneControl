@@ -25,12 +25,5 @@ namespace CraneWeb.Controllers
             Driver.Off();
             return Ok();
         }
-
-        [HttpGet, Route("api/control/mag/{on}")]
-        public IHttpActionResult OperateMagnet(bool on)
-        {
-            Driver.ActivateMagnet(on);
-            return Ok();
-        }
     }
 }
