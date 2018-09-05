@@ -4,6 +4,7 @@ using SerialLib;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -29,6 +30,13 @@ namespace CraneWeb.Controllers
                 var operations = context.CraneOperations
                     .ToDictionary(k => k.OpCode.ToString(), v => v);
 
+                String portsPath = @"C:\ports.json";
+                List<int> availablePorts = new List<int>();
+                if (File.Exists(portsPath))
+                {
+                    availablePorts = JsonConvert.DeserializeObject<List<int>>(File.ReadAllText(portsPath));
+                }
+
                 var settings =
                     JsonConvert.DeserializeAnonymousType(ConfigurationManager.AppSettings["ServerSettings"],
                     new[]
@@ -36,7 +44,7 @@ namespace CraneWeb.Controllers
                         new
                         {
                             PortName = "",
-                            Value = 0
+                            Value = 0,
                         }
                     }).ToDictionary(k => k.PortName, v => v.Value);
 
@@ -47,7 +55,8 @@ namespace CraneWeb.Controllers
                     comPort = Driver._com,
                     operations = operations,
                     refreshPort = settings["CameraServerRefreshPort"],
-                    ipAddress = ip
+                    ipAddress = ip,
+                    availablePorts
                 });
             }
         }

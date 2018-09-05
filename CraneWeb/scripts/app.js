@@ -49,18 +49,13 @@ app.directive('imageOnload', function () {
     };
 });
 
-app.controller('appController', function ($http, ComPort) {
+app.controller('cameraController', function ($http, settings) {
     var vm = this;
-    vm.activePort = ComPort;
-    vm.magOn = false;
 
     vm.$onInit = function () {
-
-    }
-
-    vm.activateMagnet = function () {
-        vm.magOn = !vm.magOn
-        $http.get('api/control/mag/' + vm.magOn);
+        settings.then(function (result) {
+            vm.cameras = result.data.availablePorts;
+        });
     }
 });
 
