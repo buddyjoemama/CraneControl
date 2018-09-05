@@ -48,9 +48,16 @@ namespace YawcamServiceController
                 if(cam == null)
                 {
                     var newCam = new XElement("void", new XAttribute("property", "cam"));
-                    newCam.Add(new XElement("int", camNum++));
+                    newCam.Add(new XElement("int", camNum));
 
                     root.Element("object").Add(newCam);
+
+                    camNum += 1;
+                }
+                else
+                {
+                    cam.Element("int").SetValue(camNum);
+                    camNum += 1;
                 }
 
                 root.Save(settingsFile);
