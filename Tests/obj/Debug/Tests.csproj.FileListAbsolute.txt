@@ -25,7 +25,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debu
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.xml
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csproj.CoreCompileInputs.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.dll
@@ -64,3 +63,6 @@ C:\Source\CraneProject\Tests\obj\Debug\Tests.pdb
 C:\Source\CraneProject\Tests\obj\Debug\Tests.csprojAssemblyReference.cache
 C:\Source\CraneProject\Tests\bin\Debug\Open.Nat.dll
 C:\Source\CraneProject\Tests\bin\Debug\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Open.Nat.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csprojAssemblyReference.cache

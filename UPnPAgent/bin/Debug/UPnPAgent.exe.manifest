@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>oHWZXGIvnexy7WCoe5m4XHejhab1EsfYZ/gOaAeCFSw=</dsig:DigestValue>
+        <dsig:DigestValue>7jlzrq40odtNurWjsPuANhcgHxJhh8YKPyzTiU0qTJs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -78,7 +78,7 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de\Microsoft.Data.Edm.resources.dll" size="75400">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Data.Edm.resources.dll" size="75400">
       <assemblyIdentity name="Microsoft.Data.Edm.resources" version="5.8.3.0" publicKeyToken="31BF3856AD364E35" language="de" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
@@ -198,7 +198,7 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de\Microsoft.Data.OData.resources.dll" size="291976">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Data.OData.resources.dll" size="291976">
       <assemblyIdentity name="Microsoft.Data.OData.resources" version="5.8.3.0" publicKeyToken="31BF3856AD364E35" language="de" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
@@ -318,7 +318,7 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de\Microsoft.Data.Services.Client.resources.dll" size="74376">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.Data.Services.Client.resources.dll" size="74376">
       <assemblyIdentity name="Microsoft.Data.Services.Client.resources" version="5.8.3.0" publicKeyToken="31BF3856AD364E35" language="de" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
@@ -474,7 +474,7 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de\System.Spatial.resources.dll" size="26760">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Spatial.resources.dll" size="26760">
       <assemblyIdentity name="System.Spatial.resources" version="5.8.3.0" publicKeyToken="31BF3856AD364E35" language="de" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
@@ -589,7 +589,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fWxNr0qb8RadonxIC7uZaVNl64A2kr6bA/Gf+GskF7g=</dsig:DigestValue>
+        <dsig:DigestValue>G3xt3ISFevno8VATMDVaDlwYcRMg7KxECQu7FfHnkyg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

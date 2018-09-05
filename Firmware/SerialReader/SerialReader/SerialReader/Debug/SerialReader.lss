@@ -151,6 +151,7 @@ void Shift(int northChip, int southChip)
      14e:	2101      	movs	r1, #1
      150:	200a      	movs	r0, #10
      152:	f001 fac9 	bl	16e8 <digitalWrite>
+}
      156:	bd70      	pop	{r4, r5, r6, pc}
 
 00000158 <loop>:

@@ -17,7 +17,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\EntityFramework.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\bin\Debug\Open.Nat.xml
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csprojResolveAssemblyReference.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csproj.CoreCompileInputs.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.dll
@@ -39,3 +38,4 @@ C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csproj.CopyComplete
 C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.dll
 C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.pdb
 C:\Source\CraneProject\SerialLib\obj\Debug\SerialLib.csprojAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\SerialLib\obj\Debug\SerialLib.csprojAssemblyReference.cache

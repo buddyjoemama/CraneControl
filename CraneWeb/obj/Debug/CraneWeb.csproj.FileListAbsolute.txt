@@ -120,7 +120,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\k
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\ru\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\zh-Hans\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\zh-Hant\System.Spatial.resources.dll
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\obj\Debug\CraneWeb.csprojResolveAssemblyReference.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\obj\Debug\CraneWeb.csproj.CoreCompileInputs.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\obj\Debug\CraneWeb.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\obj\Debug\CraneWeb.dll
@@ -254,3 +253,6 @@ C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.pdb
 C:\Source\CraneProject\CraneWeb\obj\Debug\CraneWeb.csprojAssemblyReference.cache
 C:\Source\CraneProject\CraneWeb\bin\Open.Nat.dll
 C:\Source\CraneProject\CraneWeb\bin\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Open.Nat.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\obj\Debug\CraneWeb.csprojAssemblyReference.cache
