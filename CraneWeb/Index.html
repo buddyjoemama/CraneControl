@@ -58,8 +58,7 @@
     </style>
     <div>
         <div id="right" ng-controller="cameraController as vm">
-            <button ng-click="vm.cam1()">Camera 1</button>
-            <button ng-click="vm.cam2()">Camera 2</button>
+            <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
         </div>
         <div id="left">
             <div>Platform</div>

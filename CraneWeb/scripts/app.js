@@ -13,27 +13,39 @@ app.component('camera', {
     bindings: {
         camera: '@'
     },
-    controller: function ($http, $timeout, settings) {
+    controller: function ($http, $timeout, settings, $rootScope) {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
-            $ctrl.imageLoaded();
-        }
+            settings.then(function (s) {
+                $ctrl.availablePorts = s.data.availablePorts;
+                $ctrl.currentCameraPort = s.data.availablePorts[0];
+                $ctrl.ipAddress = "localhost";//s.data.ipAddress;
+                return $ctrl.updateCamera();
+            });
+        };
 
         $ctrl.imageLoaded = function () {
-            settings.then(function (sResult) {
-                if (!$ctrl.id) {
-                    $http.get('api/camera').then(function (result) {
-                        $ctrl.id = result.data.id;
-                        $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
-                    });
-                } else {
-                    $timeout(function () {
-                        $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
-                    }, 40);
-                }
+            $timeout(function () {
+                $ctrl.url = "http://" + $ctrl.ipAddress + ":" + $ctrl.currentCameraPort + "/out.jpg?r=" + new Date().getTime();
+            }, 40);
+        };
+
+        $ctrl.updateCamera = function () {
+            $http.get('api/camera?port=' + $ctrl.currentCameraPort).then(function (result) {
+                $ctrl.id = result.id;
+                $ctrl.imageLoaded();
             });
-        }
+        };
+
+        $ctrl.changeCamera = function (port) {
+            $ctrl.currentCameraPort = port;
+            $ctrl.updateCamera();
+        };
+
+        $rootScope.$on('cameraPortChange', function (event, args) {
+            $ctrl.changeCamera(args);
+        });
     }
 });
 
@@ -49,14 +61,18 @@ app.directive('imageOnload', function () {
     };
 });
 
-app.controller('cameraController', function ($http, settings) {
+app.controller('cameraController', function ($http, settings, $rootScope) {
     var vm = this;
 
     vm.$onInit = function () {
         settings.then(function (result) {
             vm.cameras = result.data.availablePorts;
         });
-    }
+    };
+
+    vm.changeCamera = function (port) {
+        $rootScope.$broadcast('cameraPortChange', port);
+    };
 });
 
 app.directive('loader', function (settings) {
@@ -80,6 +96,9 @@ app.directive('button', function (settings, $http) {
             clickMode: '@'
         },
         link: function (scope, element, attrs) {
+            if (!attrs.op)
+                return;
+
             attrs.$set('disabled', true);
             attrs.$set('on', false);
             settings.then(function (result) {
