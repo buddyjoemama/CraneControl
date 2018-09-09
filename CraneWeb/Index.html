@@ -1,4 +1,4 @@
-<html ng-app="craneWeb">
+<html>
 
 <head>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -60,20 +60,20 @@
         <div id="right" ng-controller="cameraController as vm">
             <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
         </div>
-        <div id="left">
+        <div id="left" ng-controller="craneController as vm">
             <div>Platform</div>
-            <button class="btn btn-lg op-button" op="PlatformNorth">
+            <button class="btn btn-lg op-button" op="PlatformNorth" off="PlatformSouth" ng-click="vm.operate($event)">
                 <i class="fas fa-angle-up fa-2x"></i>
             </button>
             <div>
-                <button class="btn btn-lg op-button" op="PlatformWest">
+                <button class="btn btn-lg op-button" op="PlatformWest" off="PlatformEast" ng-click="vm.operate($event)">
                     <i class="fas fa-angle-left fa-2x"></i>
                 </button>
-                <button class="btn btn-lg op-button" op="PlatformEast">
+                <button class="btn btn-lg op-button" op="PlatformEast" off="PlatformWest" ng-click="vm.operate($event)">
                     <i class="fas fa-angle-right fa-2x"></i>
                 </button>
             </div>
-            <button class="btn btn-lg op-button" op="PlatformSouth">
+            <button class="btn btn-lg op-button" op="PlatformSouth" off="PlatformNorth" ng-click="vm.operate($event)">
                 <i class="fas fa-angle-down fa-2x"></i>
             </button>
             <div>
@@ -107,6 +107,12 @@
                 <div>Magnet</div>
                 <button class="btn btn-block op-button" op="Magnet">
                     <i class="fas fa-bolt fa-2x"></i>
+                </button>
+            </div>
+            <div>
+                <div>Master Reset</div>
+                <button class="btn btn-block op-button" op="MasterOff">
+                    <i class="fas fa-stop fa-2x"></i>
                 </button>
             </div>
         </div>

@@ -1,4 +1,5 @@
-﻿using CraneWeb.Data;
+﻿
+using Common.Data;
 using Open.Nat;
 using System;
 using System.Collections.Generic;
@@ -109,7 +110,6 @@ namespace SerialLib
 
         public static void Off()
         {
-            
             s_chipActions[ActionSource.SouthChip] = 0;
             s_chipActions[ActionSource.NorthChip] = 0;
             WriteAll();

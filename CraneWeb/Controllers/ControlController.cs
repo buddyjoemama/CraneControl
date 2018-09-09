@@ -1,11 +1,5 @@
-﻿using CraneWeb.Data;
+﻿using Common.Data;
 using SerialLib;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace CraneWeb.Controllers

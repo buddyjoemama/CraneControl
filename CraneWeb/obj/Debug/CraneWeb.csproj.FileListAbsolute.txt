@@ -50,9 +50,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\r
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\roslyn\VBCSCompiler.exe
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Common.dll
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\CraneWeb.Data.dll
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\EntityFramework.dll
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\EntityFramework.SqlServer.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Newtonsoft.Json.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\SerialLib.dll
@@ -67,12 +64,8 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\M
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\System.Spatial.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Common.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Common.dll.config
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\CraneWeb.Data.pdb
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\CraneWeb.Data.dll.config
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\SerialLib.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\SerialLib.dll.config
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\EntityFramework.xml
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\EntityFramework.SqlServer.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\Newtonsoft.Json.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\CraneWeb\bin\System.Net.Http.Formatting.xml
