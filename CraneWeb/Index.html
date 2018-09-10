@@ -78,40 +78,40 @@
             </button>
             <div>
                 <div>Cab Rotation</div>
-                <button class="btn btn-lg op-button" op="CabCW" click-mode="hold">
+                <button class="btn btn-lg op-button" op="CabCW" off="CabCCW" ng-click="vm.operate($event)">
                     <i class="fas fa-redo fa-2x"></i>
                 </button>
-                <button class="btn btn-lg op-button" op="CabCCW" click-mode="hold">
+                <button class="btn btn-lg op-button" op="CabCCW" off="CabCW" ng-click="vm.operate($event)">
                     <i class="fas fa-undo fa-2x"></i>
                 </button>
             </div>
             <div id="boom">
                 <div>Boom</div>
-                <button class="btn btn-lg op-button" op="BoomUp" click-mode="hold">
+                <button class="btn btn-lg op-button" op="BoomUp" off="BoomDown" ng-click="vm.operate($event)">
                     <i class="fas fa-angle-up fa-2x"></i>
                 </button>
-                <button class="btn btn-lg op-button" op="BoomDown" click-mode="hold">
+                <button class="btn btn-lg op-button" op="BoomDown" off="BoomUp" ng-click="vm.operate($event)">
                     <i class="fas fa-angle-down fa-2x"></i>
                 </button>
             </div>
             <div id="hook">
                 <div>Hook</div>
-                <button class="btn btn-lg op-button" op="HookUp" click-mode="hold">
+                <button class="btn btn-lg op-button" op="HookUp" off="HookDown" ng-click="vm.operate($event)">
                     <i class="fas fa-angle-up fa-2x"></i>
                 </button>
-                <button class="btn btn-lg op-button" op="HookDown" click-mode="hold">
+                <button class="btn btn-lg op-button" op="HookDown" off="HookUp" ng-click="vm.operate($event)">
                     <i class="fas fa-angle-down fa-2x"></i>
                 </button>
             </div>
             <div id="magnet">
                 <div>Magnet</div>
-                <button class="btn btn-block op-button" op="Magnet">
+                <button class="btn btn-block op-button" op="Magnet" ng-click="vm.operateMagnet()">
                     <i class="fas fa-bolt fa-2x"></i>
                 </button>
             </div>
             <div>
                 <div>Master Reset</div>
-                <button class="btn btn-block op-button" op="MasterOff">
+                <button class="btn btn-block op-button" ng-click="vm.allOff()">
                     <i class="fas fa-stop fa-2x"></i>
                 </button>
             </div>
@@ -122,6 +122,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="scripts/angular-touch.min.js"></script>
+    <script src="scripts/lodash.min.js"></script>
     <script src="scripts/app.js"></script>
 </body>
 

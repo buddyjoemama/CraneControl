@@ -81,12 +81,34 @@ app.directive('loader', function () {
     };
 });
 
+app.directive('op', function (settings) {
+    return {        
+        scope: {
+            op: '@'
+        },
+        link: function (scope, element, attrs) {
+            var o = settings.operations[scope.op];
+
+            scope.$on('actionOn', function (event, args) {
+                if (args === o) {
+                    attrs.$set('on', true);
+                }
+            });
+
+            scope.$on('actionOff', function (event, args) {
+                if (args === o) {
+                    attrs.$set('on', false);
+                }
+            });
+        }
+    };
+});
+
 app.controller('craneController', function ($scope, settings, $http, $q) {
     var vm = this;
 
     vm.$onInit = function () {
         vm.settings = settings;
-        vm.currentOperation = null;
     };
 
     vm.operate = function ($event) {
@@ -105,6 +127,28 @@ app.controller('craneController', function ($scope, settings, $http, $q) {
         }
     };
 
+    vm.allOff = function () {
+        console.log("Master off");
+
+        $http.put('api/control/off').then(function () {
+            _.forEach(vm.settings.operations, function (item) {
+                item.on = false;
+                $scope.$broadcast('actionOff', item);
+            });
+        });
+    };
+
+    vm.operateMagnet = function () {
+        var magOnOp = vm.settings.operations["Magnet"];
+
+        if (magOnOp.on) {
+            off(magOnOp);
+        }
+        else {
+            on(magOnOp);
+        }
+    };
+
     function on(op) {
         console.log("Activating: " + op.Name);
         $http.post('api/control', {
@@ -112,6 +156,7 @@ app.controller('craneController', function ($scope, settings, $http, $q) {
             Action: 'On'
         }).then(function () {
             op.on = true;
+            $scope.$broadcast('actionOn', op);
         });
     }
 
@@ -126,6 +171,7 @@ app.controller('craneController', function ($scope, settings, $http, $q) {
                 Action: 'Off'
             }).then(function () {
                 op.on = false;
+                $scope.$broadcast('actionOff', op);
                 deferred.resolve();
             });
         }
@@ -134,122 +180,5 @@ app.controller('craneController', function ($scope, settings, $http, $q) {
         }
 
         return deferred.promise;
-    }
-});
-
-app.directive('button', function () {
-    return {
-        restrict: 'E',
-        scope: {
-            op: '@',
-            clickMode: '@'
-        },
-        link: function (scope, element, attrs) {
-
-            var op = scope.$parent.vm.settings.operations[attrs.op];
-
-            if (op) {
-                scope.$watch(op.on, function (n, o) {
-                    console.log("test");
-                });
-            }
-            //var op = attrs.op;
-            //$rootScope.$watch($rootScope.operationStates[op], function (n, o) {
-            //    debugger;
-            //});
-            // scope.$watch(scope.parent.
-            //scope.$on('on', function (e, args) {
-            //    attrs.$set('on', true);
-            //});
-
-            //scope.$on('off', function (e, args) {
-            //    attrs.$set('on', false);
-            //});
-            //if (!attrs.op)
-            //    return;
-
-
-            //attrs.$set('disabled', true);
-            //attrs.$set('on', false);
-            //settings.then(function (result) {
-            //    attrs.$set('disabled', false);
-            //    loadButtonActions(attrs, scope, element, result.data);
-            //});
-        }
-    };
-
-    function buttonDown(scope, attrs) {
-        if (scope.waiting)
-            return;
-        else if (attrs['on'] == false) {
-            scope.on();
-        }
-    }
-
-    function buttonUp(scope, attrs) {
-        if (attrs['on'] == true && !scope.waiting) {
-            scope.off();
-        } else if (scope.waiting) {
-            scope.$watch(scope.waiting, function () {
-                if (attrs['on'] == true && !scope.waiting)
-                    scope.off();
-            });
-        }
-    }
-
-    function loadButtonActions(attrs, scope, element, result) {
-        scope.waiting = false;
-
-        scope.on = function () {
-            var el = result.operations[scope.op];
-            scope.waiting = true;
-            $http.post('api/control', {
-                Operation: el,
-                Action: 'On'
-            }).then(function (result) {
-                attrs.$set('on', true);
-                scope.waiting = false;
-            });
-        };
-
-        scope.off = function () {
-            var el = result.operations[scope.op];
-            $http.post('api/control', {
-                Operation: el,
-                Action: 'Off'
-            }).then(function (result) {
-                attrs.$set('on', false);
-            });
-        }
-
-        if (scope.op !== "Magnet") {
-            var event = navigator.platform === "Win32" ?
-                {
-                    events: ['mousedown', 'mouseout mouseup'],
-                }
-                :
-                {
-                    events: ['touchstart', 'touchend'],
-                }
-
-            element.on(event.events[0], function () {
-                buttonDown(scope, attrs);
-            });
-
-            element.on(event.events[1], function () {
-                buttonUp(scope, attrs);
-            });
-        } else {
-            element.on('click', function () {
-                //attrs.$set('on', !attrs.on);
-
-                if (!attrs.on) {
-                    scope.on();
-                }
-                else {
-                    scope.off();
-                }
-            });
-        }
     }
 });
