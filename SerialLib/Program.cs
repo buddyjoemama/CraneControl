@@ -87,16 +87,13 @@ namespace SerialLib
         public static void OperateCrane(List<ControlboardOperation> operations)
         {
             lastStartTime = DateTime.UtcNow;
+            CraneOperation magOp = CraneOperation.GetByOpCode(CraneOperations.Magnet);
             
             foreach(var op in operations)
             {
                 if (op.Action == CraneOperationAction.Off)
                 {
-                    if (op.Operation.OpCode != CraneOperations.Magnet)
-                        s_chipActions[op.Operation.ActionSource] = (byte)(s_chipActions[op.Operation.ActionSource] & 64);
-                    else
-                        s_chipActions[op.Operation.ActionSource] = 0;
-
+                    s_chipActions[op.Operation.ActionSource] &= (byte)~(1 << (int)op.Operation.BitPosition);
                     continue;
                 }
                 else
@@ -193,7 +190,9 @@ namespace SerialLib
                         var val = Encoding.Default.GetString(inBuffer);
 
                         if (String.Compare(val, "ok", true) == 0)
+                        {
                             return name;
+                        }
                     }
                 }
                 catch
