@@ -23,7 +23,7 @@ app.component('camera', {
         $ctrl.$onInit = function () {
             $ctrl.availablePorts = settings.availableCameras;
             $ctrl.currentCameraPort = settings.availableCameras[0];
-            $ctrl.ipAddress = "localhost";//s.data.ipAddress;
+            $ctrl.ipAddress = settings.ipAddress;
             return $ctrl.updateCamera();
         };
 
