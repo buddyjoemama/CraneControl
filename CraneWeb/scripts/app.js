@@ -17,7 +17,7 @@ app.component('camera', {
     bindings: {
         camera: '@'
     },
-    controller: function ($http, $timeout, settings) {
+    controller: function ($scope, $http, $timeout, settings) {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
@@ -44,6 +44,10 @@ app.component('camera', {
             $ctrl.currentCameraPort = port;
             $ctrl.updateCamera();
         };
+
+        $scope.$on('cameraPortChange', function (event, port) {
+            $ctrl.changeCamera(port);
+        });
     }
 });
 
@@ -63,7 +67,7 @@ app.controller('cameraController', function ($http, settings, $rootScope) {
     var vm = this;
 
     vm.$onInit = function () {
-        vm.cameras = settings.availablePorts;
+        vm.cameras = settings.availableCameras;
     };
 
     vm.changeCamera = function (port) {

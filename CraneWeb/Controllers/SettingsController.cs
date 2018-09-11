@@ -31,6 +31,11 @@ namespace CraneWeb.Controllers
             {
                 availablePorts = JsonConvert.DeserializeObject<List<int>>(File.ReadAllText(portsPath));
             }
+            else
+            {
+                availablePorts.Add(8100);
+                availablePorts.Add(8101);
+            }
 
             var settings =
                 JsonConvert.DeserializeAnonymousType(ConfigurationManager.AppSettings["ServerSettings"],
