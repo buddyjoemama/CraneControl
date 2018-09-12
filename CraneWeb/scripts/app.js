@@ -153,6 +153,18 @@ app.controller('craneController', function ($scope, settings, $http, $q) {
         }
     };
 
+    vm.mouseHold = function ($event) {
+        var onOn = $event.currentTarget.getAttribute('op');
+        var op = vm.settings.operations[onOn];
+        
+        if (op.on) {
+            off(op);
+        }
+        else {
+            on(op);
+        }
+    };
+
     function on(op) {
         console.log("Activating: " + op.Name);
         $http.post('api/control', {
