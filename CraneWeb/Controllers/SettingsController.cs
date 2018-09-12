@@ -47,7 +47,7 @@ namespace CraneWeb.Controllers
 
             return Json(new
             {
-                comPort = Driver._com,
+                comPort = Driver.FindControllerComPort(),
                 operations = operations,
                 refreshPort = settings["CameraServerRefreshPort"],
                 ipAddress = ip,
