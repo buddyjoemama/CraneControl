@@ -50,6 +50,8 @@ namespace Common.Data
         [JsonProperty("on")]
         public bool On => false;
 
+        public bool SupportsPulse { get; set; }
+
         public static CraneOperation GetByOpCode(CraneOperations op)
         {
             return GetAll().Single(s => s.OpCode == op);
@@ -57,8 +59,8 @@ namespace Common.Data
 
         public static List<CraneOperation> GetAll()
         {
-            CraneOperation cabCW = new CraneOperation { Name = "Cab CW", ActionSource = ActionSource.NorthChip, BitPosition = 0, OpCode = CraneOperations.CabCW };
-            CraneOperation cabCCW = new CraneOperation { Name = "Cab CCW", ActionSource = ActionSource.NorthChip, BitPosition = 1, OpCode = CraneOperations.CabCCW };
+            CraneOperation cabCW = new CraneOperation { Name = "Cab CW", ActionSource = ActionSource.NorthChip, BitPosition = 0, OpCode = CraneOperations.CabCW, SupportsPulse = true };
+            CraneOperation cabCCW = new CraneOperation { Name = "Cab CCW", ActionSource = ActionSource.NorthChip, BitPosition = 1, OpCode = CraneOperations.CabCCW, SupportsPulse = true };
             CraneOperation boomUp = new CraneOperation { Name = "Boom Up", ActionSource = ActionSource.NorthChip, BitPosition = 2, OpCode = CraneOperations.BoomUp };
             CraneOperation boomDown = new CraneOperation { Name = "BoomDown", ActionSource = ActionSource.NorthChip, BitPosition = 3, OpCode = CraneOperations.BoomDown };
 

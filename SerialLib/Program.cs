@@ -81,8 +81,45 @@ namespace SerialLib
 
         public static void OperateCrane(ControlboardOperation op)
         {
-            OperateCrane(new List<ControlboardOperation> { op });
+            if (op.Operation.SupportsPulse && _pulseThread == null && op.Action == CraneOperationAction.On)
+            {
+                OperateCrane(new List<ControlboardOperation> { op });
+
+                _cancelTokenSource = new CancellationTokenSource();
+                CancellationToken token = _cancelTokenSource.Token;
+
+                token.Register(() =>
+                {
+                    _pulseThread = null;
+                });
+
+                _pulseThread = Task.Run(() =>
+                {                                        
+                    while (!token.IsCancellationRequested)
+                    {
+                        if (op.Action == CraneOperationAction.On)
+                            op.Action = CraneOperationAction.Off;
+                        else
+                            op.Action = CraneOperationAction.On;
+
+                        OperateCrane(new List<ControlboardOperation> { op });
+                        Thread.Sleep(10);
+                    }
+
+                }, token);
+            }
+            else if(op.Operation.SupportsPulse && op.Action == CraneOperationAction.Off)
+            {
+                _cancelTokenSource.Cancel();
+            }
+            else
+            {
+                OperateCrane(new List<ControlboardOperation> { op });
+            }
         }
+
+        private static Task _pulseThread = null;
+        private static CancellationTokenSource _cancelTokenSource = null;
 
         public static void OperateCrane(List<ControlboardOperation> operations)
         {
@@ -117,7 +154,7 @@ namespace SerialLib
 
         }
 
-        public static void Write(byte northChip, byte southChip)
+        private static void Write(byte northChip, byte southChip)
         {
             if (_com == null)
                 _com = FindControllerComPort();

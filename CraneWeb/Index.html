@@ -78,10 +78,10 @@
             </button>
             <div>
                 <div>Cab Rotation</div>
-                <button class="btn btn-lg op-button" op="CabCW" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
+                <button class="btn btn-lg op-button" op="CabCW" off="CabCCW" ng-click="vm.operate($event)">
                     <i class="fas fa-redo fa-2x"></i>
                 </button>
-                <button class="btn btn-lg op-button" op="CabCCW" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
+                <button class="btn btn-lg op-button" op="CabCCW" off="CabCW" ng-click="vm.operate($event)">
                     <i class="fas fa-undo fa-2x"></i>
                 </button>
             </div>
