@@ -83,34 +83,36 @@ namespace SerialLib
         {
             if (op.Operation.SupportsPulse && _pulseThread == null && op.Action == CraneOperationAction.On)
             {
-                OperateCrane(new List<ControlboardOperation> { op });
-
                 _cancelTokenSource = new CancellationTokenSource();
                 CancellationToken token = _cancelTokenSource.Token;
 
                 token.Register(() =>
                 {
                     _pulseThread = null;
+                    return;
                 });
 
                 _pulseThread = Task.Run(() =>
-                {                                        
-                    while (!token.IsCancellationRequested)
+                {
+                    if (!token.IsCancellationRequested)
                     {
-                        if (op.Action == CraneOperationAction.On)
-                            op.Action = CraneOperationAction.Off;
-                        else
-                            op.Action = CraneOperationAction.On;
+                        while (!token.IsCancellationRequested)
+                        {
+                            if (op.Action == CraneOperationAction.On)
+                                op.Action = CraneOperationAction.Off;
+                            else
+                                op.Action = CraneOperationAction.On;
 
-                        OperateCrane(new List<ControlboardOperation> { op });
-                        Thread.Sleep(10);
+                            OperateCrane(new List<ControlboardOperation> { op });
+                            Thread.Sleep(20);
+                        }
                     }
-
                 }, token);
             }
             else if(op.Operation.SupportsPulse && op.Action == CraneOperationAction.Off)
             {
                 _cancelTokenSource.Cancel();
+                OperateCrane(new List<ControlboardOperation> { op });
             }
             else
             {
