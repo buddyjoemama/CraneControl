@@ -1,4 +1,5 @@
-﻿using CraneWeb.Data;
+﻿
+using Common.Data;
 using Open.Nat;
 using System;
 using System.Collections.Generic;
@@ -78,15 +79,60 @@ namespace SerialLib
             });
         }
 
+        public static void OperateCrane(ControlboardOperation op)
+        {
+            if (op.Operation.SupportsPulse && _pulseThread == null && op.Action == CraneOperationAction.On)
+            {
+                _cancelTokenSource = new CancellationTokenSource();
+                CancellationToken token = _cancelTokenSource.Token;
+
+                token.Register(() =>
+                {
+                    _pulseThread = null;
+                    return;
+                });
+
+                _pulseThread = Task.Run(() =>
+                {
+                    if (!token.IsCancellationRequested)
+                    {
+                        while (!token.IsCancellationRequested)
+                        {
+                            if (op.Action == CraneOperationAction.On)
+                                op.Action = CraneOperationAction.Off;
+                            else
+                                op.Action = CraneOperationAction.On;
+
+                            OperateCrane(new List<ControlboardOperation> { op });
+                            Thread.Sleep(20);
+                        }
+                    }
+                }, token);
+            }
+            else if(op.Operation.SupportsPulse && op.Action == CraneOperationAction.Off)
+            {
+                _cancelTokenSource.Cancel();
+                OperateCrane(new List<ControlboardOperation> { op });
+            }
+            else
+            {
+                OperateCrane(new List<ControlboardOperation> { op });
+            }
+        }
+
+        private static Task _pulseThread = null;
+        private static CancellationTokenSource _cancelTokenSource = null;
+
         public static void OperateCrane(List<ControlboardOperation> operations)
         {
             lastStartTime = DateTime.UtcNow;
+            CraneOperation magOp = CraneOperation.GetByOpCode(CraneOperations.Magnet);
             
             foreach(var op in operations)
             {
                 if (op.Action == CraneOperationAction.Off)
                 {
-                    s_chipActions[op.Operation.ActionSource] = 0;
+                    s_chipActions[op.Operation.ActionSource] &= (byte)~(1 << (int)op.Operation.BitPosition);
                     continue;
                 }
                 else
@@ -96,11 +142,6 @@ namespace SerialLib
             }
 
             WriteAll();
-        }
-
-        public static void OperateCrane(ControlboardOperation op)
-        {
-            OperateCrane(new List<ControlboardOperation> { op });
         }
 
         public static void Off()
@@ -115,7 +156,7 @@ namespace SerialLib
 
         }
 
-        public static void Write(byte northChip, byte southChip)
+        private static void Write(byte northChip, byte southChip)
         {
             if (_com == null)
                 _com = FindControllerComPort();
@@ -188,7 +229,9 @@ namespace SerialLib
                         var val = Encoding.Default.GetString(inBuffer);
 
                         if (String.Compare(val, "ok", true) == 0)
+                        {
                             return name;
+                        }
                     }
                 }
                 catch
@@ -197,16 +240,6 @@ namespace SerialLib
             }
 
             return null;
-        }
-
-        public static void ActivateMagnet(bool on)
-        {
-            if (on)
-                s_chipActions[ActionSource.NorthChip] |= (byte)(1 << (int)6);
-            else
-                s_chipActions[ActionSource.NorthChip] &= 15;
-
-            WriteAll();
         }
     }
 }

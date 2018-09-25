@@ -5,7 +5,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debu
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Tests.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Tests.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Common.dll
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\CraneWeb.Data.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\EntityFramework.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
@@ -15,8 +14,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debu
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Newtonsoft.Json.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Common.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Common.dll.config
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\CraneWeb.Data.pdb
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\CraneWeb.Data.dll.config
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\SerialLib.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\SerialLib.dll.config
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\EntityFramework.xml
@@ -25,7 +22,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debu
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.pdb
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Microsoft.WindowsAzure.Storage.xml
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csprojResolveAssemblyReference.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csproj.CoreCompileInputs.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csproj.CopyComplete
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.dll
@@ -64,3 +60,7 @@ C:\Source\CraneProject\Tests\obj\Debug\Tests.pdb
 C:\Source\CraneProject\Tests\obj\Debug\Tests.csprojAssemblyReference.cache
 C:\Source\CraneProject\Tests\bin\Debug\Open.Nat.dll
 C:\Source\CraneProject\Tests\bin\Debug\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Open.Nat.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Open.Nat.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\obj\Debug\Tests.csprojAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\Tests\bin\Debug\Newtonsoft.Json.xml

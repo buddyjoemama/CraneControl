@@ -1,12 +1,11 @@
-﻿using CraneWeb.Data;
+﻿using Common.Data;
 using Newtonsoft.Json;
 using SerialLib;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -23,33 +22,42 @@ namespace CraneWeb.Controllers
         [HttpGet, Route("api/settings/all")]
         public async Task<IHttpActionResult> GetSettings()
         {
-            using (CraneDbContext context = new CraneDbContext())
-            {
-                context.Configuration.ProxyCreationEnabled = false;
-                var operations = context.CraneOperations
-                    .ToDictionary(k => k.OpCode.ToString(), v => v);
+            var operations = CraneOperation.GetAll()
+                .ToDictionary(k => k.OpCode.ToString(), v => v);
 
-                var settings =
-                    JsonConvert.DeserializeAnonymousType(ConfigurationManager.AppSettings["ServerSettings"],
-                    new[]
-                    {
+            String portsPath = @"C:\ports.json";
+            List<int> availablePorts = new List<int>();
+            if (File.Exists(portsPath))
+            {
+                availablePorts = JsonConvert.DeserializeObject<List<int>>(File.ReadAllText(portsPath));
+            }
+            else
+            {
+                availablePorts.Add(8100);
+                availablePorts.Add(8101);
+            }
+
+            var settings =
+                JsonConvert.DeserializeAnonymousType(ConfigurationManager.AppSettings["ServerSettings"],
+                new[]
+                {
                         new
                         {
                             PortName = "",
-                            Value = 0
+                            Value = 0,
                         }
-                    }).ToDictionary(k => k.PortName, v => v.Value);
+                }).ToDictionary(k => k.PortName, v => v.Value);
 
-                var ip = await Common.NetworkHelper.GetExternalIPAddress();
+            var ip = await Common.NetworkHelper.GetExternalIPAddress();
 
-                return Json(new
-                {
-                    comPort = Driver._com,
-                    operations = operations,
-                    refreshPort = settings["CameraServerRefreshPort"],
-                    ipAddress = ip
-                });
-            }
+            return Json(new
+            {
+                comPort = Driver.FindControllerComPort(),
+                operations = operations,
+                refreshPort = settings["CameraServerRefreshPort"],
+                ipAddress = ip,
+                availableCameras = availablePorts
+            });
         }
     }
 }

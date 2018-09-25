@@ -1,39 +1,53 @@
+(function () {
+    var initInjector = angular.injector(['ng']);
+    initInjector.instantiate(function ($http) {
+        $http.get('api/settings/all').then(function (result) {
+            app.value('settings', result.data);
+            return $http.put('api/control/off');
+        }).then(function () {
+            angular.bootstrap(document, ['craneWeb']);
+        });
+    });
+})(window.document);
+
 var app = angular.module('craneWeb', ['ui.bootstrap', 'ngTouch']);
-
-app.run(function ($http) {
-    $http.put('api/control/off');
-});
-
-app.factory('settings', function ($http, $q) {
-    return $http.get('api/settings/all');
-});
 
 app.component('camera', {
     template: '<img ng-src="{{$ctrl.url}}" image-onload="$ctrl.imageLoaded()"/>',
     bindings: {
         camera: '@'
     },
-    controller: function ($http, $timeout, settings) {
+    controller: function ($scope, $http, $timeout, settings) {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
-            $ctrl.imageLoaded();
-        }
+            $ctrl.availablePorts = settings.availableCameras;
+            $ctrl.currentCameraPort = settings.availableCameras[0];
+            $ctrl.ipAddress = settings.ipAddress;
+            return $ctrl.updateCamera();
+        };
 
         $ctrl.imageLoaded = function () {
-            settings.then(function (sResult) {
-                if (!$ctrl.id) {
-                    $http.get('api/camera').then(function (result) {
-                        $ctrl.id = result.data.id;
-                        $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
-                    });
-                } else {
-                    $timeout(function () {
-                        $ctrl.url = "http://" + sResult.data.ipAddress + ":" + sResult.data.refreshPort + "/out.jpg?r=" + new Date().getTime();
-                    }, 40);
-                }
+            $timeout(function () {
+                $ctrl.url = "http://" + $ctrl.ipAddress + ":" + $ctrl.currentCameraPort + "/out.jpg?r=" + new Date().getTime();
+            }, 40);
+        };
+
+        $ctrl.updateCamera = function () {
+            $http.get('api/camera?port=' + $ctrl.currentCameraPort).then(function (result) {
+                $ctrl.id = result.id;
+                $ctrl.imageLoaded();
             });
-        }
+        };
+
+        $ctrl.changeCamera = function (port) {
+            $ctrl.currentCameraPort = port;
+            $ctrl.updateCamera();
+        };
+
+        $scope.$on('cameraPortChange', function (event, port) {
+            $ctrl.changeCamera(port);
+        });
     }
 });
 
@@ -49,110 +63,147 @@ app.directive('imageOnload', function () {
     };
 });
 
-app.controller('appController', function ($http, ComPort) {
+app.controller('cameraController', function ($http, settings, $rootScope) {
     var vm = this;
-    vm.activePort = ComPort;
-    vm.magOn = false;
 
     vm.$onInit = function () {
+        vm.cameras = settings.availableCameras;
+    };
 
-    }
-
-    vm.activateMagnet = function () {
-        vm.magOn = !vm.magOn
-        $http.get('api/control/mag/' + vm.magOn);
-    }
+    vm.changeCamera = function (port) {
+        $rootScope.$broadcast('cameraPortChange', port);
+    };
 });
 
-app.directive('loader', function (settings) {
+app.directive('loader', function () {
     return {
         restrict: 'E',
         template: '<div ng-hide="hide"><h1><strong>Connecting to server...</strong></h1></div>',
         link: function (scope, element, attrs) {
-            scope.hide = false;
-            settings.then(function (result) {
-                scope.hide = true;
+            scope.hide = true;
+        }
+    };
+});
+
+app.directive('op', function (settings) {
+    return {        
+        scope: {
+            op: '@'
+        },
+        link: function (scope, element, attrs) {
+            var o = settings.operations[scope.op];
+
+            scope.$on('actionOn', function (event, args) {
+                if (args === o) {
+                    attrs.$set('on', true);
+                }
+            });
+
+            scope.$on('actionOff', function (event, args) {
+                if (args === o) {
+                    attrs.$set('on', false);
+                }
             });
         }
     };
 });
 
-app.directive('button', function (settings, $http) {
-    return {
-        restrict: 'E',
-        scope: {
-            op: '@',
-            clickMode: '@'
-        },
-        link: function (scope, element, attrs) {
-            attrs.$set('disabled', true);
-            attrs.$set('on', false);
-            settings.then(function (result) {
-                attrs.$set('disabled', false);
-                loadButtonActions(attrs, scope, element, result.data);
+app.controller('craneController', function ($scope, settings, $http, $q) {
+    var vm = this;
+
+    vm.$onInit = function () {
+        vm.settings = settings;
+    };
+
+    vm.operate = function ($event) {
+        var onOn = $event.currentTarget.getAttribute('op');
+        var op = vm.settings.operations[onOn];
+
+        var offOp = $event.currentTarget.getAttribute('off');
+        var opOff = vm.settings.operations[offOp];
+
+        if (op.on) {
+            off(op);
+        } else {
+            off(opOff).then(function () {
+                on(op);
             });
         }
     };
 
-    function buttonDown(scope, attrs) {
-        if (scope.waiting)
-            return;
-        else if (attrs['on'] == false) {
-            scope.on();
+    vm.allOff = function () {
+        console.log("Master off");
+
+        $http.put('api/control/off').then(function () {
+            _.forEach(vm.settings.operations, function (item) {
+                item.on = false;
+                $scope.$broadcast('actionOff', item);
+            });
+        });
+    };
+
+    vm.operateMagnet = function () {
+        var magOnOp = vm.settings.operations["Magnet"];
+
+        if (magOnOp.on) {
+            off(magOnOp);
         }
+        else {
+            on(magOnOp);
+        }
+    };
+
+    vm.mouseHold = function ($event) {
+        var onOn = $event.currentTarget.getAttribute('op');
+        var op = vm.settings.operations[onOn];
+        
+        if (op.on) {
+            off(op);
+        }
+        else {
+            on(op);
+        }
+    };
+
+    vm.mouseLeave = function ($event) {
+        var onOn = $event.currentTarget.getAttribute('op');
+        var op = vm.settings.operations[onOn];
+
+        if (op.on) {
+            off(op);
+        }
+    };
+
+    function on(op) {
+        console.log("Activating: " + op.Name);
+        $http.post('api/control', {
+            Operation: op,
+            Action: 'On'
+        }).then(function () {
+            op.on = true;
+            $scope.$broadcast('actionOn', op);
+        });
     }
 
-    function buttonUp(scope, attrs) {
-        if (attrs['on'] == true && !scope.waiting) {
-            scope.off();
-        } else if (scope.waiting) {
-            scope.$watch(scope.waiting, function () {
-                if (attrs['on'] == true && !scope.waiting)
-                    scope.off();
-            });
-        }
-    }
+    function off(op) {
+        var deferred = $q.defer();
 
-    function loadButtonActions(attrs, scope, element, result) {
-        scope.waiting = false;
+        if (op.on) {
+            console.log("Deactivating: " + op.Name);
 
-        scope.on = function () {
-            var el = result.operations[scope.op];
-            scope.waiting = true;
-            $http.post('api/control', [{
-                Operation: el,
-                Action: 'On'
-            }]).then(function (result) {
-                attrs.$set('on', true);
-                scope.waiting = false;
-            });
-        };
-
-        scope.off = function () {
-            var el = result.operations[scope.op];
-            $http.post('api/control', [{
-                Operation: el,
+            $http.post('api/control', {
+                Operation: op,
                 Action: 'Off'
-            }]).then(function (result) {
-                attrs.$set('on', false);
+            }).then(function () {
+                op.on = false;
+                $scope.$broadcast('actionOff', op);
+                deferred.resolve();
             });
         }
+        else {
+            deferred.resolve();
+        }
 
-        var event = navigator.platform === "Win32" ?
-            {
-                events: ['mousedown', 'mouseout mouseup'],
-            }
-                :
-            {
-                events: ['touchstart', 'touchend'],
-            }
-
-        element.on(event.events[0], function () {
-            buttonDown(scope, attrs);
-        });
-
-        element.on(event.events[1], function () {
-            buttonUp(scope, attrs);
-        });
+        return deferred.promise;
     }
 });

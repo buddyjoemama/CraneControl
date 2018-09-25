@@ -1,11 +1,5 @@
-﻿using CraneWeb.Data;
+﻿using Common.Data;
 using SerialLib;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace CraneWeb.Controllers
@@ -13,9 +7,9 @@ namespace CraneWeb.Controllers
     public class ControlController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult Operate(List<ControlboardOperation> ops)
+        public IHttpActionResult Operate(ControlboardOperation op)
         {
-            Driver.OperateCrane(ops);
+            Driver.OperateCrane(op);
             return Ok();
         }
 
@@ -23,13 +17,6 @@ namespace CraneWeb.Controllers
         public IHttpActionResult Off()
         {
             Driver.Off();
-            return Ok();
-        }
-
-        [HttpGet, Route("api/control/mag/{on}")]
-        public IHttpActionResult OperateMagnet(bool on)
-        {
-            Driver.ActivateMagnet(on);
             return Ok();
         }
     }

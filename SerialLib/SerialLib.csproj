@@ -63,9 +63,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CraneWeb.Data\CraneWeb.Data.csproj">
-      <Project>{73f959ee-2e85-4018-9379-e544ab4ccb81}</Project>
-      <Name>CraneWeb.Data</Name>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{a60765eb-6156-4af8-8feb-4854d536a7b4}</Project>
+      <Name>Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

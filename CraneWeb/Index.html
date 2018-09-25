@@ -1,4 +1,4 @@
-<html ng-app="craneWeb">
+<html>
 
 <head>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
@@ -31,6 +31,13 @@
             text-align: center;
         }
 
+        div#right {
+            position: fixed;
+            right: 0;
+            float: right;
+            z-index: 100;
+        }
+
         .op-button,
         op-button:active {
             background-color: rgba(255, 255, 255, .25);
@@ -50,54 +57,63 @@
 
     </style>
     <div>
-        <div id="left">
+        <div id="right" ng-controller="cameraController as vm">
+            <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
+        </div>
+        <div id="left" ng-controller="craneController as vm">
             <div>Platform</div>
-            <button class="btn btn-lg op-button" op="PlatformNorth">
-                    <i class="fas fa-angle-up fa-2x"></i>
-                </button>
+            <button class="btn btn-lg op-button" op="PlatformNorth" off="PlatformSouth" ng-click="vm.operate($event)">
+                <i class="fas fa-angle-up fa-2x"></i>
+            </button>
             <div>
-                <button class="btn btn-lg op-button" op="PlatformWest">
-                        <i class="fas fa-angle-left fa-2x"></i>
-                    </button>
-                <button class="btn btn-lg op-button" op="PlatformEast">
-                        <i class="fas fa-angle-right fa-2x"></i>
-                    </button>
-            </div>
-            <button class="btn btn-lg op-button" op="PlatformSouth">
-                    <i class="fas fa-angle-down fa-2x"></i>
+                <button class="btn btn-lg op-button" op="PlatformWest" off="PlatformEast" ng-click="vm.operate($event)">
+                    <i class="fas fa-angle-left fa-2x"></i>
                 </button>
+                <button class="btn btn-lg op-button" op="PlatformEast" off="PlatformWest" ng-click="vm.operate($event)">
+                    <i class="fas fa-angle-right fa-2x"></i>
+                </button>
+            </div>
+            <button class="btn btn-lg op-button" op="PlatformSouth" off="PlatformNorth" ng-click="vm.operate($event)">
+                <i class="fas fa-angle-down fa-2x"></i>
+            </button>
             <div>
                 <div>Cab Rotation</div>
-                <button class="btn btn-lg op-button" op="CabCW" click-mode="hold">
-                        <i class="fas fa-redo fa-2x"></i>
-                    </button>
-                <button class="btn btn-lg op-button" op="CabCCW" click-mode="hold">
-                        <i class="fas fa-undo fa-2x"></i>
-                    </button>
+                <button class="btn btn-lg op-button" op="CabCW" off="CabCCW" ng-click="vm.operate($event)">
+                    <i class="fas fa-redo fa-2x"></i>
+                </button>
+                <button class="btn btn-lg op-button" op="CabCCW" off="CabCW" ng-click="vm.operate($event)">
+                    <i class="fas fa-undo fa-2x"></i>
+                </button>
             </div>
             <div id="boom">
                 <div>Boom</div>
-                <button class="btn btn-lg op-button" op="BoomUp" click-mode="hold">
-                        <i class="fas fa-angle-up fa-2x"></i>
-                    </button>
-                <button class="btn btn-lg op-button" op="BoomDown" click-mode="hold">
-                        <i class="fas fa-angle-down fa-2x"></i>
-                    </button>
+                <button class="btn btn-lg op-button" op="BoomUp" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
+                    <i class="fas fa-angle-up fa-2x"></i>
+                </button>
+                <button class="btn btn-lg op-button" op="BoomDown" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
+                    <i class="fas fa-angle-down fa-2x"></i>
+                </button>
             </div>
             <div id="hook">
                 <div>Hook</div>
-                <button class="btn btn-lg op-button" op="HookUp" click-mode="hold">
-                        <i class="fas fa-angle-up fa-2x"></i>
-                    </button>
-                <button class="btn btn-lg op-button" op="HookDown" click-mode="hold">
-                        <i class="fas fa-angle-down fa-2x"></i>
-                    </button>
+                <button class="btn btn-lg op-button" op="HookUp" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
+                    <i class="fas fa-angle-up fa-2x"></i>
+                </button>
+                <button class="btn btn-lg op-button" op="HookDown" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
+                    <i class="fas fa-angle-down fa-2x"></i>
+                </button>
             </div>
             <div id="magnet">
                 <div>Magnet</div>
-                <button class="btn btn-block op-button" op="Magnet">
-                        <i class="fas fa-bolt fa-2x"></i>
-                    </button>
+                <button class="btn btn-block op-button" op="Magnet" ng-click="vm.operateMagnet()">
+                    <i class="fas fa-bolt fa-2x"></i>
+                </button>
+            </div>
+            <div>
+                <div>Master Reset</div>
+                <button class="btn btn-block op-button" ng-click="vm.allOff()">
+                    <i class="fas fa-stop fa-2x"></i>
+                </button>
             </div>
         </div>
         <loader></loader>
@@ -106,6 +122,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
     <script src="scripts/angular-touch.min.js"></script>
+    <script src="scripts/lodash.min.js"></script>
     <script src="scripts/app.js"></script>
 </body>
 

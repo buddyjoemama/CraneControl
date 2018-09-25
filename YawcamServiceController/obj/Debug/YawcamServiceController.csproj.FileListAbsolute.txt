@@ -1,0 +1,10 @@
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\bin\Debug\YawcamServiceController.exe.config
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\bin\Debug\YawcamServiceController.exe
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\bin\Debug\YawcamServiceController.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\obj\Debug\YawcamServiceController.csproj.CoreCompileInputs.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\obj\Debug\YawcamServiceController.exe
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\obj\Debug\YawcamServiceController.pdb
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\bin\Debug\Newtonsoft.Json.dll
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\bin\Debug\Newtonsoft.Json.xml
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\obj\Debug\YawcamServiceController.csproj.CopyComplete
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\YawcamServiceController\obj\Debug\YawcamServiceController.csprojAssemblyReference.cache

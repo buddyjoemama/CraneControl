@@ -56,7 +56,6 @@ C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\ru\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\zh-Hans\System.Spatial.resources.dll
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\bin\Debug\zh-Hant\System.Spatial.resources.dll
-C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csprojResolveAssemblyReference.cache
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.Agent.resources
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.ProjectInstaller.resources
 C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csproj.GenerateResource.cache
@@ -138,3 +137,4 @@ C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.csproj.CopyComplete
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.exe
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.pdb
 C:\Source\CraneProject\UPnPAgent\obj\Debug\UPnPAgent.csprojAssemblyReference.cache
+C:\Users\brian\Documents\Visual Studio 2017\Projects\CraneControl\UPnPAgent\obj\Debug\UPnPAgent.csprojAssemblyReference.cache

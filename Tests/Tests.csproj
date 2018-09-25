@@ -67,10 +67,6 @@
       <Project>{a60765eb-6156-4af8-8feb-4854d536a7b4}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CraneWeb.Data\CraneWeb.Data.csproj">
-      <Project>{73f959ee-2e85-4018-9379-e544ab4ccb81}</Project>
-      <Name>CraneWeb.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SerialLib\SerialLib.csproj">
       <Project>{febe6349-1e2e-4f63-a083-0baedfb15358}</Project>
       <Name>SerialLib</Name>
