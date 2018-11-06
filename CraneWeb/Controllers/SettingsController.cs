@@ -25,38 +25,24 @@ namespace CraneWeb.Controllers
             var operations = CraneOperation.GetAll()
                 .ToDictionary(k => k.OpCode.ToString(), v => v);
 
-            String portsPath = @"C:\ports.json";
-            List<int> availablePorts = new List<int>();
-            if (File.Exists(portsPath))
-            {
-                availablePorts = JsonConvert.DeserializeObject<List<int>>(File.ReadAllText(portsPath));
-            }
-            else
-            {
-                availablePorts.Add(8100);
-                availablePorts.Add(8101);
-            }
 
-            var settings =
-                JsonConvert.DeserializeAnonymousType(ConfigurationManager.AppSettings["ServerSettings"],
-                new[]
-                {
-                        new
-                        {
-                            PortName = "",
-                            Value = 0,
-                        }
-                }).ToDictionary(k => k.PortName, v => v.Value);
-
-            var ip = await Common.NetworkHelper.GetExternalIPAddress();
+            String ip = null;
+            try
+            {
+                ip = await Common.NetworkHelper.GetExternalIPAddress();
+            }
+            catch { }
 
             return Json(new
             {
-                comPort = Driver.FindControllerComPort(),
-                operations = operations,
-                refreshPort = settings["CameraServerRefreshPort"],
+                operations,
                 ipAddress = ip,
-                availableCameras = availablePorts
+                pvtActions = Enum.GetNames(typeof(PvtActions))
+                    .Select(s=> new
+                    {
+                        name = s,
+                        id = Enum.Parse(typeof(PvtActions), s)
+                    })
             });
         }
     }

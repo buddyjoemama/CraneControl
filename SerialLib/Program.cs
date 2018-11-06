@@ -49,10 +49,20 @@ namespace SerialLib
         On = 4
     }
 
+    public enum PvtActions
+    {
+        Up = 8,
+        Down = 9,
+        Left = 16,
+        Right = 10,
+        Off = 255
+    }
+
     public static class Driver
     {
         private static Dictionary<ActionSource, byte> s_chipActions = new Dictionary<ActionSource, byte>();
         public static string _com;
+        public static string _pvtCom;
         public static object locker = new object();
         public static CraneOperation magOperation;
         static DateTime? lastStartTime = null;
@@ -77,6 +87,16 @@ namespace SerialLib
                     Thread.Sleep(1000);
                 }
             });
+        }
+
+        public static void OperatePVT(PvtActions action)
+        {
+            using (SerialPort port = new SerialPort(_pvtCom))
+            {
+                port.Open();
+                port.Write(new byte[] { 255 }, 0, 0);
+                port.Write(new byte[] { (byte)action }, 0, 1);
+            }
         }
 
         public static void OperateCrane(ControlboardOperation op)
@@ -240,6 +260,11 @@ namespace SerialLib
             }
 
             return null;
+        }
+
+        public static String FindPvtPort()
+        {
+            return "";
         }
     }
 }
