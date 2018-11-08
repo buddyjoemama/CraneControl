@@ -61,7 +61,7 @@ namespace SerialLib
         {
             s_chipActions.Add(ActionSource.NorthChip, 0);
             s_chipActions.Add(ActionSource.SouthChip, 0);
-            _com = FindControllerComPort();
+            _com = "COM7";
             magOperation = CraneOperation.GetByOpCode(CraneOperations.Magnet);
 
             Task.Run(() =>
@@ -104,7 +104,7 @@ namespace SerialLib
                                 op.Action = CraneOperationAction.On;
 
                             OperateCrane(new List<ControlboardOperation> { op });
-                            Thread.Sleep(20);
+                            Thread.Sleep(5);
                         }
                     }
                 }, token);
@@ -239,7 +239,7 @@ namespace SerialLib
                 }
             }
 
-            return null;
+            return "COM7";
         }
     }
 }
