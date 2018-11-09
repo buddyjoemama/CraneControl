@@ -58,9 +58,16 @@
     <div>
         <div id="right" ng-controller="cameraController as vm">
             <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
-            <div>
-                <button style="width: 50%; margin-left: auto; margin-right: auto;" class="btn btn-block" ng-mousedown="vm.camUp()" ng-mouseup="vm.stop()">
+            <div ng-if="camera.supportsPvt">
+                <button style="width: 50%; margin-left: auto; margin-right: auto;" class="btn btn-block" ng-mousedown="vm.moveCam('Up')" ng-mouseup="vm.stop()">
                     <i class="fas fa-angle-up fa-2x"></i>
+                </button>
+                <div>
+                    <button class="btn" style="margin-left: 35px" ng-mousedown="vm.moveCam('Left')" ng-mouseup="vm.stop()"><i class="fas fa-angle-left fa-2x"></i></button>
+                    <button class="btn" ng-mousedown="vm.moveCam('Right')" mg-mouseup="vm.stop()"><i class="fas fa-angle-right fa-2x"></i></button>
+                </div>
+                <button style="width: 50%; margin-left: auto; margin-right: auto;" ng-mousedown="vm.moveCam('Down')" ng-mouseup="vm.stop()" class="btn btn-block" ng-mousedown="vm.camUp()" ng-mouseup="vm.stop()">
+                    <i class="fas fa-angle-down fa-2x"></i>
                 </button>
             </div>
         </div>

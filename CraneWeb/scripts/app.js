@@ -76,11 +76,11 @@ app.controller('cameraController', function ($http, settings, $rootScope) {
     };
 
     vm.stop = function () {
-
+        $http.post('api/PVT', { action: 'Stop' });
     }
 
-    vm.camUp = function () {
-        $http.post('api/PVT', { action: 'Up' });
+    vm.moveCam = function (dir) {
+        $http.post('api/PVT', { action: dir });
     }
 });
 
