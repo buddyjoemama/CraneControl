@@ -51,8 +51,8 @@ namespace SerialLib
 
     public enum PvtActions
     {
-        Up = 8,
-        Down = 9,
+        Up = 9,
+        Down = 8,
         Left = 16,
         Right = 10,
         Off = 255
@@ -91,11 +91,11 @@ namespace SerialLib
 
         public static void OperatePVT(PvtActions action)
         {
-            using (SerialPort port = new SerialPort(_pvtCom))
+            using (SerialPort port = new SerialPort("COM12"))
             {
                 port.Open();
-                port.Write(new byte[] { 255 }, 0, 0);
-                port.Write(new byte[] { (byte)action }, 0, 1);
+                port.WriteLine("255");
+                port.WriteLine(((int)action).ToString());
             }
         }
 
