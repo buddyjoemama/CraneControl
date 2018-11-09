@@ -21,10 +21,11 @@ app.component('camera', {
         var $ctrl = this;
 
         $ctrl.$onInit = function () {
-            $ctrl.availablePorts = settings.availableCameras;
-            $ctrl.currentCameraPort = settings.availableCameras[0];
             $ctrl.ipAddress = settings.ipAddress;
-            return $ctrl.updateCamera();
+
+            if ($ctrl.currentCameraPort) {
+                $ctrl.updateCamera();
+            }
         };
 
         $ctrl.imageLoaded = function () {
@@ -67,12 +68,20 @@ app.controller('cameraController', function ($http, settings, $rootScope) {
     var vm = this;
 
     vm.$onInit = function () {
-        vm.cameras = settings.availableCameras;
+        vm.cameras = settings.cameras;
     };
 
     vm.changeCamera = function (port) {
         $rootScope.$broadcast('cameraPortChange', port);
     };
+
+    vm.stop = function () {
+
+    }
+
+    vm.camUp = function () {
+        $http.post('api/PVT', { action: 'Up' });
+    }
 });
 
 app.directive('loader', function () {

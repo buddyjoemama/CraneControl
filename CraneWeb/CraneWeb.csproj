@@ -108,6 +108,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\CameraController.cs" />
     <Compile Include="Controllers\ControlController.cs" />
+    <Compile Include="Controllers\PVTController.cs" />
     <Compile Include="Controllers\SettingsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

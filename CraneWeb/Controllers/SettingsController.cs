@@ -42,7 +42,15 @@ namespace CraneWeb.Controllers
                     {
                         name = s,
                         id = Enum.Parse(typeof(PvtActions), s)
-                    })
+                    }),
+                cameras = new []
+                {
+                    new
+                    {
+                        supportsPvt = true,
+                        port = 8100
+                    }
+                }
             });
         }
     }

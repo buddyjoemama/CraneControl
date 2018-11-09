@@ -9,14 +9,26 @@ namespace CraneWeb.Controllers
         [HttpPost]
         public IHttpActionResult Operate(ControlboardOperation op)
         {
-            Driver.OperateCrane(op);
+            try
+            {
+                Driver.OperateCrane(op);
+            }
+            catch { }
             return Ok();
         }
 
         [HttpPut, Route("api/control/off")]
         public IHttpActionResult Off()
         {
-            Driver.Off();
+            try
+            {
+                Driver.Off();
+            }
+            catch
+            {
+
+            }
+
             return Ok();
         }
     }

@@ -54,11 +54,15 @@
             top: 0px;
             display: inline;
         }
-
     </style>
     <div>
         <div id="right" ng-controller="cameraController as vm">
             <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
+            <div>
+                <button style="width: 50%; margin-left: auto; margin-right: auto;" class="btn btn-block" ng-mousedown="vm.camUp()" ng-mouseup="vm.stop()">
+                    <i class="fas fa-angle-up fa-2x"></i>
+                </button>
+            </div>
         </div>
         <div id="left" ng-controller="craneController as vm">
             <div>Platform</div>
