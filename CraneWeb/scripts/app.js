@@ -22,32 +22,29 @@ app.component('camera', {
 
         $ctrl.$onInit = function () {
             $ctrl.ipAddress = settings.ipAddress;
-
-            if ($ctrl.currentCameraPort) {
-                $ctrl.updateCamera();
-            }
+            $ctrl.changeCamera(settings.cameras[0]);
         };
 
         $ctrl.imageLoaded = function () {
             $timeout(function () {
-                $ctrl.url = "http://" + $ctrl.ipAddress + ":" + $ctrl.currentCameraPort + "/out.jpg?r=" + new Date().getTime();
+                $ctrl.url = "http://" + $ctrl.ipAddress + ":" + $ctrl.currentCamera.port + "/out.jpg?r=" + new Date().getTime();
             }, 40);
         };
 
         $ctrl.updateCamera = function () {
-            $http.get('api/camera?port=' + $ctrl.currentCameraPort).then(function (result) {
+            $http.get('api/camera?port=' + $ctrl.currentCamera.port).then(function (result) {
                 $ctrl.id = result.id;
                 $ctrl.imageLoaded();
             });
         };
 
-        $ctrl.changeCamera = function (port) {
-            $ctrl.currentCameraPort = port;
+        $ctrl.changeCamera = function (camera) {
+            $ctrl.currentCamera = camera;
             $ctrl.updateCamera();
         };
 
         $scope.$on('cameraPortChange', function (event, camera) {
-            $ctrl.changeCamera(camera.port);
+            $ctrl.changeCamera(camera);
         });
     }
 });
