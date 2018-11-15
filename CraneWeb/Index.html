@@ -56,17 +56,17 @@
         }
     </style>
     <div>
-        <div id="right" ng-controller="cameraController as vm">
+        <div id="right" style="text-align: center;" ng-controller="cameraController as vm">
             <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
-            <div ng-if="camera.supportsPvt">
+            <div ng-if="vm.selectedCamera.supportsPvt">
                 <button style="width: 50%; margin-left: auto; margin-right: auto;" class="btn btn-block" ng-mousedown="vm.moveCam('Up')" ng-mouseup="vm.stop()">
                     <i class="fas fa-angle-up fa-2x"></i>
                 </button>
                 <div>
-                    <button class="btn" style="margin-left: 35px" ng-mousedown="vm.moveCam('Left')" ng-mouseup="vm.stop()"><i class="fas fa-angle-left fa-2x"></i></button>
+                    <button class="btn" ng-mousedown="vm.moveCam('Left')" ng-mouseup="vm.stop()"><i class="fas fa-angle-left fa-2x"></i></button>
                     <button class="btn" ng-mousedown="vm.moveCam('Right')" mg-mouseup="vm.stop()"><i class="fas fa-angle-right fa-2x"></i></button>
                 </div>
-                <button style="width: 50%; margin-left: auto; margin-right: auto;" ng-mousedown="vm.moveCam('Down')" ng-mouseup="vm.stop()" class="btn btn-block" ng-mousedown="vm.camUp()" ng-mouseup="vm.stop()">
+                <button style="width: 50%; margin-left: auto; margin-right: auto;" ng-mousedown="vm.moveCam('Down')" ng-mouseup="vm.stop()" class="btn btn-block">
                     <i class="fas fa-angle-down fa-2x"></i>
                 </button>
             </div>
@@ -89,10 +89,10 @@
             </button>
             <div>
                 <div>Cab Rotation</div>
-                <button class="btn btn-lg op-button" op="CabCW" off="CabCCW" ng-click="vm.operate($event)">
+                <button class="btn btn-lg op-button" op="CabCW" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
                     <i class="fas fa-redo fa-2x"></i>
                 </button>
-                <button class="btn btn-lg op-button" op="CabCCW" off="CabCW" ng-click="vm.operate($event)">
+                <button class="btn btn-lg op-button" op="CabCCW" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
                     <i class="fas fa-undo fa-2x"></i>
                 </button>
             </div>

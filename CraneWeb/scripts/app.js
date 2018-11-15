@@ -46,8 +46,8 @@ app.component('camera', {
             $ctrl.updateCamera();
         };
 
-        $scope.$on('cameraPortChange', function (event, port) {
-            $ctrl.changeCamera(port);
+        $scope.$on('cameraPortChange', function (event, camera) {
+            $ctrl.changeCamera(camera.port);
         });
     }
 });
@@ -69,10 +69,12 @@ app.controller('cameraController', function ($http, settings, $rootScope) {
 
     vm.$onInit = function () {
         vm.cameras = settings.cameras;
+        vm.selectedCamera = vm.cameras[0];
     };
 
-    vm.changeCamera = function (port) {
-        $rootScope.$broadcast('cameraPortChange', port);
+    vm.changeCamera = function (camera) {
+        vm.selectedCamera = camera;
+        $rootScope.$broadcast('cameraPortChange', camera);
     };
 
     vm.stop = function () {
