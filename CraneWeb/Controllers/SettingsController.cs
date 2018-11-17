@@ -49,6 +49,11 @@ namespace CraneWeb.Controllers
                     {
                         supportsPvt = true,
                         port = 8100
+                    },
+                    new
+                    {
+                        supportsPvt = false,
+                        port = 8181
                     }
                 }
             });

@@ -21,7 +21,14 @@ namespace CraneWeb.Controllers
             var id = (new Random()).NextDouble();
             var rand = (new Random()).NextDouble();
 
-            var result = await client.GetAsync($"http://localhost:{port}/get?id={id}&r={rand}");
+            String ip = null;
+            try
+            {
+                ip = await Common.NetworkHelper.GetExternalIPAddress();
+            }
+            catch { }
+
+            var result = await client.GetAsync($"http://{ip}:{port}/get?id={id}&r={rand}");
 
             return Json(new
             {
