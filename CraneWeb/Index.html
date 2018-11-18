@@ -55,23 +55,18 @@
             display: inline;
         }
     </style>
-    <script>
-        function bindEvent(btn) {
-            debugger;
-        }
-    </script>
     <div>
         <div id="right" style="text-align: center;" ng-controller="cameraController as vm">
             <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
             <div ng-if="vm.selectedCamera.supportsPvt">
-                <button style="width: 50%; margin-left: auto; margin-right: auto;" class="btn btn-block" ontouchstart="window.vm.moveCam('Up')" ontouchend="window.vm.stop()">
+                <button style="width: 50%; margin-left: auto; margin-right: auto;" class="btn btn-block" action-start="vm.moveCam('Up')" action-end="vm.stop()">
                     <i class="fas fa-angle-up fa-2x"></i>
                 </button>
                 <div>
-                    <button class="btn" ontouchstart="window.vm.moveCam('Right')" ontouchend="window.vm.stop()"><i class="fas fa-angle-left fa-2x"></i></button>
-                    <button class="btn" ontouchstart="window.vm.moveCam('Left')" ontouchend="window.vm.stop()"><i class="fas fa-angle-right fa-2x"></i></button>
+                    <button class="btn" action-start="vm.moveCam('Right')" action-end="vm.stop()"><i class="fas fa-angle-left fa-2x"></i></button>
+                    <button class="btn" action-start="vm.moveCam('Left')" action-end="vm.stop()"><i class="fas fa-angle-right fa-2x"></i></button>
                 </div>
-                <button style="width: 50%; margin-left: auto; margin-right: auto;" ontouchstart="window.vm.moveCam('Down')" ontouchend="window.vm.stop()" class="btn btn-block">
+                <button style="width: 50%; margin-left: auto; margin-right: auto;" action-start="vm.moveCam('Down')" action-end="vm.stop()" class="btn btn-block">
                     <i class="fas fa-angle-down fa-2x"></i>
                 </button>
             </div>

@@ -61,6 +61,33 @@ app.directive('imageOnload', function () {
     };
 });
 
+app.directive('actionStart', function () {
+    return {
+        scope: {
+            actionStart: '&',
+            actionEnd: '&'
+        },
+        link: function (scope, element, attrs) {
+
+            if (!('ontouchstart' in window)) {
+                element.on('mousedown', function () {
+                    scope.actionStart();
+                });
+                element.on('mouseup', function () {
+                    scope.actionEnd();
+                });
+            } else {
+                element.on('touchstart', function () {
+                    scope.actionStart();
+                });
+                element.on('touchend', function () {
+                    scope.actionEnd();
+                });
+            }
+        }
+    };
+});
+
 app.controller('cameraController', function ($http, settings, $rootScope) {
     var vm = this;
     window.vm = this;
