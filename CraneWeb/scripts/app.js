@@ -63,6 +63,7 @@ app.directive('imageOnload', function () {
 
 app.controller('cameraController', function ($http, settings, $rootScope) {
     var vm = this;
+    window.vm = this;
 
     vm.$onInit = function () {
         vm.cameras = settings.cameras;
