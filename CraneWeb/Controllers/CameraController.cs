@@ -24,7 +24,7 @@ namespace CraneWeb.Controllers
             String ip = null;
             try
             {
-                ip = await Common.NetworkHelper.GetExternalIPAddress();
+                ip = "216.41.240.26";
             }
             catch { }
 

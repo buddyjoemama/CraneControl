@@ -91,7 +91,7 @@ namespace SerialLib
 
         public static void OperatePVT(PvtActions action)
         {
-            using (SerialPort port = new SerialPort("COM12"))
+            using (SerialPort port = new SerialPort("COM5"))
             {
                 port.Open();
                 port.WriteLine("255");
