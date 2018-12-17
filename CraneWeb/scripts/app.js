@@ -57,6 +57,10 @@ app.directive('imageOnload', function () {
                 // call the function that was passed
                 scope.$apply(attrs.imageOnload);
             });
+
+            element.bind('error', function () {
+                scope.$apply(attrs.imageOnLoad);
+            });
         }
     };
 });

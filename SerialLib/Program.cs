@@ -169,12 +169,6 @@ namespace SerialLib
             s_chipActions[ActionSource.SouthChip] = 0;
             s_chipActions[ActionSource.NorthChip] = 0;
             WriteAll();
-
-            using (SerialPort port = new SerialPort("COM12"))
-            {
-                port.Open();
-                port.WriteLine("255");
-            }
         }
 
         public static void HardResetBoard()
