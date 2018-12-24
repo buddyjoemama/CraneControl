@@ -43,6 +43,8 @@
             background-color: rgb(255, 255, 255);
             color: #333;
             border: 2px solid;
+            font-weight: bold;
+            font-size: 1.5em;
         }
 
         button.op-button:hover {
@@ -54,6 +56,11 @@
             left: 200px;
             top: 0px;
             display: inline;
+        }
+
+        .dir-label {
+            color: red;
+            font-weight: bold;
         }
 
     </style>
@@ -74,23 +81,23 @@
             </div>
         </div>
         <div id="left" ng-controller="craneController as vm">
-            <div>Platform</div>
+            <div class="dir-label">Platform</div>
             <button class="btn btn-lg op-button" op="PlatformNorth" off="PlatformSouth" ng-click="vm.operate($event)">
-                <i class="fas fa-angle-up fa-2x"></i>
+                N
             </button>
             <div>
                 <button class="btn btn-lg op-button" op="PlatformWest" off="PlatformEast" ng-click="vm.operate($event)">
-                    <i class="fas fa-angle-left fa-2x"></i>
+                    W
                 </button>
                 <button class="btn btn-lg op-button" op="PlatformEast" off="PlatformWest" ng-click="vm.operate($event)">
-                    <i class="fas fa-angle-right fa-2x"></i>
+                    E
                 </button>
             </div>
             <button class="btn btn-lg op-button" op="PlatformSouth" off="PlatformNorth" ng-click="vm.operate($event)">
-                <i class="fas fa-angle-down fa-2x"></i>
+                S
             </button>
             <div>
-                <div>Cab Rotation</div>
+                <div class="dir-label">Cab Rotation</div>
                 <button class="btn btn-lg op-button" op="CabCW" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
                     <i class="fas fa-redo fa-2x"></i>
                 </button>
@@ -99,7 +106,7 @@
                 </button>
             </div>
             <div id="boom">
-                <div>Boom</div>
+                <div class="dir-label">Boom</div>
                 <button class="btn btn-lg op-button" op="BoomUp" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
                     <i class="fas fa-angle-up fa-2x"></i>
                 </button>
@@ -108,7 +115,7 @@
                 </button>
             </div>
             <div id="hook">
-                <div>Hook</div>
+                <div class="dir-label">Hook</div>
                 <button class="btn btn-lg op-button" op="HookUp" ng-mousedown="vm.mouseHold($event)" ng-mouseleave="vm.mouseLeave($event)" ng-mouseup="vm.mouseHold($event)">
                     <i class="fas fa-angle-up fa-2x"></i>
                 </button>
@@ -117,14 +124,14 @@
                 </button>
             </div>
             <div id="magnet">
-                <div>Magnet</div>
+                <div class="dir-label">Magnet</div>
                 <button class="btn btn-block op-button" op="Magnet" ng-click="vm.operateMagnet()">
                     <i class="fas fa-bolt fa-2x"></i>
                 </button>
             </div>
             <div>
-                <div>Master Reset</div>
-                <button class="btn btn-block op-button" ng-click="vm.allOff()">
+                <div class="dir-label">Emergency Stop</div>
+                <button class="btn btn-block op-button" style="background-color: red;" ng-click="vm.allOff()">
                     <i class="fas fa-stop fa-2x"></i>
                 </button>
             </div>
