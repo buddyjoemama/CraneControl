@@ -169,9 +169,16 @@ namespace SerialLib
             s_chipActions[ActionSource.SouthChip] = 0;
             s_chipActions[ActionSource.NorthChip] = 0;
             WriteAll();
+
+            OperatePVT(PvtActions.Off);
+
+            if (_cancelTokenSource != null && !_cancelTokenSource.IsCancellationRequested)
+            {
+                _cancelTokenSource.Cancel();
+            }
         }
 
-        public static void HardResetBoard()
+        public static void HardResetBoard() 
         {
 
         }
