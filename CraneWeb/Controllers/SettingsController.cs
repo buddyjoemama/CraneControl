@@ -48,12 +48,14 @@ namespace CraneWeb.Controllers
                     new
                     {
                         supportsPvt = true,
-                        port = 8100
+                        port = 8100,
+                        name = "P & T"
                     },
                     new
                     {
                         supportsPvt = false,
-                        port = 8181
+                        port = 8181,
+                        name = "overhead"
                     }
                 }
             });

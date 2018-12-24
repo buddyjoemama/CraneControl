@@ -40,8 +40,9 @@
 
         .op-button,
         op-button:active {
-            background-color: rgba(255, 255, 255, .25);
+            background-color: rgb(255, 255, 255);
             color: #333;
+            border: 2px solid;
         }
 
         button.op-button:hover {
@@ -58,7 +59,7 @@
     </style>
     <div>
         <div id="right" style="text-align: center;" ng-controller="cameraController as vm">
-            <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">Camera {{$index + 1}}</button>
+            <button ng-repeat="camera in vm.cameras" ng-click="vm.changeCamera(camera)" no-action="true">{{camera.name}}</button>
             <div ng-if="vm.selectedCamera.supportsPvt">
                 <button style="width: 50%; margin-left: auto; margin-right: auto;background-color: rgba(255, 255, 255, .75);" class="btn btn-block" action-start="vm.moveCam('Up')" action-end="vm.stop()">
                     <i class="fas fa-angle-up fa-2x"></i>
