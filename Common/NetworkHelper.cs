@@ -26,13 +26,7 @@ namespace Common
 
         public static async Task<String> GetExternalIPAddress()
         {
-            IPAddress externalIp = IPAddress.None;
-            var discoverer = new NatDiscoverer();
-            var device = await discoverer.DiscoverDeviceAsync();
-
-            var res = await device.GetExternalIPAsync();
-
-            return res.ToString();
+            return "216.41.240.26";
         }
     }
 }

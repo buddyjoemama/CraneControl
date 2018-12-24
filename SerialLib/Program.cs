@@ -172,10 +172,13 @@ namespace SerialLib
 
             OperatePVT(PvtActions.Off);
 
-            if (_cancelTokenSource != null && !_cancelTokenSource.IsCancellationRequested)
+            Task.Run(() =>
             {
-                _cancelTokenSource.Cancel();
-            }
+                if (_cancelTokenSource != null && !_cancelTokenSource.IsCancellationRequested)
+                {
+                    _cancelTokenSource.Cancel();
+                }
+            });
         }
 
         public static void HardResetBoard() 
