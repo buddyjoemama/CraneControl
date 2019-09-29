@@ -9,13 +9,13 @@ namespace Common.Data
 {
     public enum ActionSource
     {
-        NorthChip,
-        SouthChip
+        NorthChip = 0,
+        SouthChip = 1
     };
 
     public enum CraneOperations
     {
-        Off,
+        Off = 0,
         CabCW,
         CabCCW,
         BoomUp,
@@ -31,8 +31,8 @@ namespace Common.Data
 
     public enum CraneOperationAction
     {
-        Off,
-        On
+        Off = 0,
+        On = 1
     };
 
     public class CraneOperation

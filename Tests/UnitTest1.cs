@@ -13,8 +13,8 @@ namespace Tests
         [TestMethod]
         public void TestPort()
         {
-            Assert.IsTrue(Driver.TestPort("COM9"));
-            Assert.IsFalse(Driver.TestPort("COM4"));
+            var board = ControlBoard.Initialize();
+
         }
 
         [TestMethod]

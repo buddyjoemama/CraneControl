@@ -13,12 +13,6 @@ namespace CraneWeb.Controllers
 {
     public class SettingsController : ApiController
     {
-        [HttpGet]
-        public IHttpActionResult Get(String id)
-        {
-            return Json(Driver.TestPort(id));
-        }
-
         [HttpGet, Route("api/settings/all")]
         public async Task<IHttpActionResult> GetSettings()
         {

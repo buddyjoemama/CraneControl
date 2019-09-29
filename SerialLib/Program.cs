@@ -71,8 +71,9 @@ namespace SerialLib
         {
             s_chipActions.Add(ActionSource.NorthChip, 0);
             s_chipActions.Add(ActionSource.SouthChip, 0);
-            _com = "COM7";
             magOperation = CraneOperation.GetByOpCode(CraneOperations.Magnet);
+
+            _com = FindControllerComPort();
 
             Task.Run(() =>
             {
@@ -101,47 +102,8 @@ namespace SerialLib
 
         public static void OperateCrane(ControlboardOperation op)
         {
-            if (op.Operation.SupportsPulse && _pulseThread == null && op.Action == CraneOperationAction.On)
-            {
-                _cancelTokenSource = new CancellationTokenSource();
-                CancellationToken token = _cancelTokenSource.Token;
-
-                token.Register(() =>
-                {
-                    _pulseThread = null;
-                    return;
-                });
-
-                _pulseThread = Task.Run(() =>
-                {
-                    if (!token.IsCancellationRequested)
-                    {
-                        while (!token.IsCancellationRequested)
-                        {
-                            if (op.Action == CraneOperationAction.On)
-                                op.Action = CraneOperationAction.Off;
-                            else
-                                op.Action = CraneOperationAction.On;
-
-                            OperateCrane(new List<ControlboardOperation> { op });
-                            Thread.Sleep(5);
-                        }
-                    }
-                }, token);
-            }
-            else if(op.Operation.SupportsPulse && op.Action == CraneOperationAction.Off)
-            {
-                _cancelTokenSource.Cancel();
-                OperateCrane(new List<ControlboardOperation> { op });
-            }
-            else
-            {
-                OperateCrane(new List<ControlboardOperation> { op });
-            }
+            OperateCrane(new List<ControlboardOperation> { op });
         }
-
-        private static Task _pulseThread = null;
-        private static CancellationTokenSource _cancelTokenSource = null;
 
         public static void OperateCrane(List<ControlboardOperation> operations)
         {
@@ -171,22 +133,9 @@ namespace SerialLib
             WriteAll();
 
             OperatePVT(PvtActions.Off);
-
-            Task.Run(() =>
-            {
-                if (_cancelTokenSource != null && !_cancelTokenSource.IsCancellationRequested)
-                {
-                    _cancelTokenSource.Cancel();
-                }
-            });
         }
 
-        public static void HardResetBoard() 
-        {
-
-        }
-
-        private static void Write(byte northChip, byte southChip)
+        public static void Write(byte northChip, byte southChip)
         {
             if (_com == null)
                 _com = FindControllerComPort();
@@ -210,37 +159,7 @@ namespace SerialLib
             Write(actions[0], actions[1]);
         }
 
-        public static bool TestPort(string portName)
-        {
-            try
-            {
-                String testPort = SerialPort.GetPortNames().SingleOrDefault(s => portName.Contains(s));
-                if (testPort != null)
-                {
-                    using (SerialPort port = new SerialPort(testPort))
-                    {
-                        port.ReadTimeout = 2500;
-                        port.Open();
-                        port.Write(new byte[] { 0, 0 }, 0, 2);
-
-                        byte[] inBuffer = new byte[port.BytesToRead];
-                        port.Read(inBuffer, 0, port.BytesToRead);
-
-                        var val = Encoding.Default.GetString(inBuffer);
-
-                        return String.Compare(val, "ok", true) == 0;
-                    }
-                }
-            }
-            catch
-            {
-                return false;
-            }
-
-            return false;
-        }
-
-        public static String FindControllerComPort()
+        private static String FindControllerComPort()
         {
             foreach (var name in SerialPort.GetPortNames())
             {
@@ -250,15 +169,13 @@ namespace SerialLib
                     {
                         port.ReadTimeout = 500;
                         port.Open();
-                        port.Write(new byte[] { 0, 0 }, 0, 2);
 
-                        Thread.Sleep(250);
                         byte[] inBuffer = new byte[port.BytesToRead];
                         port.Read(inBuffer, 0, port.BytesToRead);
 
                         var val = Encoding.Default.GetString(inBuffer);
 
-                        if (String.Compare(val, "ok", true) == 0)
+                        if (String.Compare(val, "Welcome", true) == 0)
                         {
                             return name;
                         }
@@ -266,15 +183,11 @@ namespace SerialLib
                 }
                 catch
                 {
+                    throw;
                 }
             }
 
-            return "COM7";
-        }
-
-        public static String FindPvtPort()
-        {
-            return "";
+            throw new Exception("Unable to auto-discover COM port.");
         }
     }
 }
