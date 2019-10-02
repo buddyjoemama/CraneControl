@@ -9,7 +9,9 @@ const int clockPin = 11;
 ////Pin connected to Data in (DS) of 74HC595
 const int dataPin = 12;
 
-uint32_t sampleRate = 500;
+uint32_t sampleRate = 500; //milliseconds
+
+int nChipVal = 0, sChipVal = 0;
 
 bool tcIsSyncing()
 {
@@ -53,14 +55,16 @@ void tcConfigure(int sampleRate)
 }
 
 void TC5_Handler (void) {
-	//YOUR CODE HERE
-	//if(state == true) {
-	//digitalWrite(LED_PIN,HIGH);
-	//} else {
-	//digitalWrite(LED_PIN,LOW);
-	//}
-	//state = !state;
-	// END OF YOUR CODE
+	
+	// If north chip has either position 0 or 1 activated, we are pulsing
+	// because this is cab
+	if( 
+		((nChipVal & 1) == 1) ||
+		((nChipVal & 2) == 2)) 
+	{
+		
+	}
+
 	TC5->COUNT16.INTFLAG.bit.MC0 = 1; //don't change this, it's part of the timer code
 }
 
@@ -120,9 +124,11 @@ void loop()
 		char* buffer = new char[2];
 		Serial.readBytes(buffer, 2);
 		
-		int nChipVal = buffer[0];
-		int sChipVal = buffer[1];
+		// North chip positions 0 and 1 are for cab rotate and need to be pulsed.
+		nChipVal = buffer[0];
+		sChipVal = buffer[1];
 		
+		// todo: if not cab...pulse will handle activation
 		Shift(nChipVal, sChipVal);
 	}
 }
