@@ -119,7 +119,7 @@ void tcConfigure(int sampleRate)
 	while (GCLK->STATUS.bit.SYNCBUSY);
 
 	tcReset(); //reset TC5
-
+	 
 	// Set Timer counter Mode to 16 bits
 	TC5->COUNT16.CTRLA.reg |= TC_CTRLA_MODE_COUNT16;
 	// Set TC5 mode as match frequency
